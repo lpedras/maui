@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using AndroidX.AppCompat.Widget;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.DeviceTests.Stubs;
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
 using AColor = global::Android.Graphics.Color;
@@ -73,10 +74,10 @@ namespace Microsoft.Maui.DeviceTests
 			};
 
 			var handler = await CreateHandlerAsync(button);
-			var appCompatButton = (AppCompatButton)handler.View;
+			var appCompatButton = (AppCompatButton)handler.NativeView;
 			var (left, top, right, bottom) = (appCompatButton.PaddingLeft, appCompatButton.PaddingTop, appCompatButton.PaddingRight, appCompatButton.PaddingBottom);
 
-			var context = handler.View.Context;
+			var context = handler.NativeView.Context;
 
 			var expectedLeft = context.ToPixels(5);
 			var expectedTop = context.ToPixels(10);
@@ -90,7 +91,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		AppCompatButton GetNativeButton(ButtonHandler buttonHandler) =>
-			(AppCompatButton)buttonHandler.View;
+			(AppCompatButton)buttonHandler.NativeView;
 
 		string GetNativeText(ButtonHandler buttonHandler) =>
 			GetNativeButton(buttonHandler).Text;

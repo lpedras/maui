@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ namespace Microsoft.Maui.Hosting
 			{ typeof(IDatePicker), typeof(DatePickerHandler) },
 			{ typeof(IEditor), typeof(EditorHandler) },
 			{ typeof(IEntry), typeof(EntryHandler) },
+			{ typeof(IImage), typeof(ImageHandler) },
 			{ typeof(ILabel), typeof(LabelHandler) },
 			{ typeof(ILayout), typeof(LayoutHandler) },
 			{ typeof(IPicker), typeof(PickerHandler) },
@@ -29,6 +31,7 @@ namespace Microsoft.Maui.Hosting
 			{ typeof(IStepper), typeof(StepperHandler) },
 			{ typeof(ISwitch), typeof(SwitchHandler) },
 			{ typeof(ITimePicker), typeof(TimePickerHandler) },
+			{ typeof(IPage), typeof(PageHandler) },
 		};
 
 		public static IAppHostBuilder ConfigureMauiHandlers(this IAppHostBuilder builder, Action<IMauiHandlersCollection> configureDelegate)
@@ -59,6 +62,13 @@ namespace Microsoft.Maui.Hosting
 			where TBuilder : IMauiServiceBuilder, new()
 		{
 			builder.ConfigureServices<TBuilder>((_, services) => configureDelegate(services));
+			return builder;
+		}
+
+		public static IAppHostBuilder ConfigureServices<TBuilder>(this IAppHostBuilder builder)
+			where TBuilder : IMauiServiceBuilder, new()
+		{
+			builder.ConfigureServices<TBuilder>((_, services) => { });
 			return builder;
 		}
 
@@ -94,7 +104,7 @@ namespace Microsoft.Maui.Hosting
 			return builder;
 		}
 
-		class HandlerCollectionBuilder : MauiServiceCollection, IMauiHandlersCollection, IMauiServiceBuilder
+		class HandlerCollectionBuilder : MauiHandlersCollection, IMauiServiceBuilder
 		{
 			public void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 			{

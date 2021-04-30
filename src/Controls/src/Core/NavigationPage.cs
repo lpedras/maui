@@ -1,13 +1,14 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
-	public class NavigationPage : Page, IPageContainer<Page>, IBarElement, INavigationPageController, IElementConfiguration<NavigationPage>
+	public partial class NavigationPage : Page, IPageContainer<Page>, IBarElement, INavigationPageController, IElementConfiguration<NavigationPage>
 	{
 		public static readonly BindableProperty BackButtonTitleProperty = BindableProperty.CreateAttached("BackButtonTitle", typeof(string), typeof(Page), null);
 
@@ -24,7 +25,7 @@ namespace Microsoft.Maui.Controls
 
 		public static readonly BindableProperty TitleIconImageSourceProperty = BindableProperty.CreateAttached("TitleIconImageSource", typeof(ImageSource), typeof(NavigationPage), default(ImageSource));
 
-		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), Color.Default);
+		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), null);
 
 		public static readonly BindableProperty TitleViewProperty = BindableProperty.CreateAttached("TitleView", typeof(View), typeof(NavigationPage), null, propertyChanging: TitleViewPropertyChanging);
 
@@ -150,7 +151,7 @@ namespace Microsoft.Maui.Controls
 		{
 			if (bindable == null)
 			{
-				return Color.Default;
+				return null;
 			}
 
 			return (Color)bindable.GetValue(IconColorProperty);
@@ -175,7 +176,7 @@ namespace Microsoft.Maui.Controls
 				else
 					CurrentNavigationTask = tcs.Task;
 
-				var result = await PopAsyncInner(animated, false);
+				var result = await (this as INavigationPageController).PopAsyncInner(animated, false);
 				tcs.SetResult(true);
 				return result;
 			}
@@ -290,8 +291,7 @@ namespace Microsoft.Maui.Controls
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public event EventHandler<NavigationRequestedEventArgs> InsertPageBeforeRequested;
 
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public async Task<Page> PopAsyncInner(bool animated, bool fast)
+		async Task<Page> INavigationPageController.PopAsyncInner(bool animated, bool fast)
 		{
 			if (StackDepth == 1)
 			{

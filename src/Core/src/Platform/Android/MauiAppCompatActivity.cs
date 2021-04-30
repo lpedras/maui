@@ -12,6 +12,12 @@ namespace Microsoft.Maui
 	{
 		protected override void OnCreate(Bundle? savedInstanceState)
 		{
+			// If the theme has the maui_splash attribute, change the theme
+			if (Theme.TryResolveAttribute(Resource.Attribute.maui_splash))
+			{
+				SetTheme(Resource.Style.Maui_MainTheme_NoActionBar);
+			}
+
 			base.OnCreate(savedInstanceState);
 
 			var mauiApp = MauiApplication.Current.Application;
@@ -23,30 +29,20 @@ namespace Microsoft.Maui
 				throw new InvalidOperationException($"The {nameof(IServiceProvider)} instance was not found.");
 
 			var mauiContext = new MauiContext(services, this);
-
 			var state = new ActivationState(mauiContext, savedInstanceState);
 			var window = mauiApp.CreateWindow(state);
-			window.MauiContext = mauiContext;
+			SetContentView(window.View.ToNative(mauiContext));
 
-			var content = (window.Page as IView) ?? window.Page.View;
-
-			CoordinatorLayout parent = new CoordinatorLayout(this);
-
-			SetContentView(parent, new ViewGroup.LayoutParams(CoordinatorLayout.LayoutParams.MatchParent, CoordinatorLayout.LayoutParams.MatchParent));
-
-			//AddToolbar(parent);
-
-			parent.AddView(content.ToNative(window.MauiContext), new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MatchParent, CoordinatorLayout.LayoutParams.MatchParent));
-		}
-
-		void AddToolbar(ViewGroup parent)
-		{
-			Toolbar toolbar = new Toolbar(this);
-			var appbarLayout = new AppBarLayout(this);
-
-			appbarLayout.AddView(toolbar, new ViewGroup.LayoutParams(AppBarLayout.LayoutParams.MatchParent, global::Android.Resource.Attribute.ActionBarSize));
-			SetSupportActionBar(toolbar);
-			parent.AddView(appbarLayout, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent));
+			//TODO MAUI
+			// Allow users to customize the toolbarid?
+			bool? windowActionBar;
+			if (Theme.TryResolveAttribute(Resource.Attribute.windowActionBar, out windowActionBar) &&
+				windowActionBar == false)
+			{
+				var toolbar = FindViewById<Toolbar>(Resource.Id.maui_toolbar);
+				if (toolbar != null)
+					SetSupportActionBar(toolbar);
+			}
 		}
 	}
 }

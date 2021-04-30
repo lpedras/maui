@@ -6,7 +6,7 @@ using AView = Android.Views.View;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class ButtonHandler : AbstractViewHandler<IButton, AppCompatButton>
+	public partial class ButtonHandler : ViewHandler<IButton, AppCompatButton>
 	{
 		static Thickness? DefaultPadding;
 
@@ -56,38 +56,31 @@ namespace Microsoft.Maui.Handlers
 			base.DisconnectHandler(nativeView);
 		}
 
-		public static void MapBackgroundColor(ButtonHandler handler, IButton button)
-		{
-			handler.TypedNativeView?.UpdateBackgroundColor(button);
-		}
-
 		public static void MapText(ButtonHandler handler, IButton button)
 		{
-			handler.TypedNativeView?.UpdateText(button);
+			handler.NativeView?.UpdateText(button);
 		}
 
 		public static void MapTextColor(ButtonHandler handler, IButton button)
 		{
-			handler.TypedNativeView?.UpdateTextColor(button);
+			handler.NativeView?.UpdateTextColor(button);
 		}
 
 		public static void MapCharacterSpacing(ButtonHandler handler, IButton button)
 		{
-			handler.TypedNativeView?.UpdateCharacterSpacing(button);
+			handler.NativeView?.UpdateCharacterSpacing(button);
 		}
 
 		public static void MapFont(ButtonHandler handler, IButton button)
 		{
-			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
+			var fontManager = handler.GetRequiredService<IFontManager>();
 
-			var fontManager = handler.Services.GetRequiredService<IFontManager>();
-
-			handler.TypedNativeView?.UpdateFont(button, fontManager);
+			handler.NativeView?.UpdateFont(button, fontManager);
 		}
 
 		public static void MapPadding(ButtonHandler handler, IButton button)
 		{
-			handler.TypedNativeView?.UpdatePadding(button, DefaultPadding);
+			handler.NativeView?.UpdatePadding(button, DefaultPadding);
 		}
 
 		bool OnTouch(IButton? button, AView? v, MotionEvent? e)

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.DeviceTests.Stubs;
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using UIKit;
 using Xunit;
@@ -69,7 +70,7 @@ namespace Microsoft.Maui.DeviceTests
 			};
 
 			var handler = await CreateHandlerAsync(button);
-			var uiButton = (UIButton)handler.View;
+			var uiButton = (UIButton)handler.NativeView;
 
 			var insets = await InvokeOnMainThreadAsync(() => { return uiButton.ContentEdgeInsets; });
 
@@ -79,8 +80,32 @@ namespace Microsoft.Maui.DeviceTests
 			Assert.Equal(20, insets.Bottom);
 		}
 
+
+
+		[Fact(DisplayName = "Default Accessibility Traits Don't Change")]
+		[InlineData()]
+		public async Task ValidateDefaultAccessibilityTraits()
+		{
+			var view = new ButtonStub();
+			var trait = await GetValueAsync((IView)view,
+				handler =>
+				{
+					// Accessibility Traits don't initialize until after
+					// a UIView is added to the visual hierarchy so we are just 
+					// initializing here and then validating that the value doesn't get cleared
+
+					handler.NativeView.AccessibilityTraits = UIAccessibilityTrait.Button;
+					view.Semantics.Hint = "Test Hint";
+					view.Handler.UpdateValue("Semantics");
+					return handler.NativeView.AccessibilityTraits;
+				});
+
+			Assert.Equal(UIAccessibilityTrait.Button, trait);
+		}
+
+
 		UIButton GetNativeButton(ButtonHandler buttonHandler) =>
-			(UIButton)buttonHandler.View;
+			(UIButton)buttonHandler.NativeView;
 
 		string GetNativeText(ButtonHandler buttonHandler) =>
 			GetNativeButton(buttonHandler).CurrentTitle;
