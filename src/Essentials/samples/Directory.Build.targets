@@ -5,4 +5,8 @@
   <Import Project="$(_MauiBuildTasksLocation)Microsoft.Maui.Resizetizer.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
   <Import Project="$(_MauiBuildTasksLocation)Microsoft.Maui.Core.targets"  />
   <Import Project="..\..\..\Directory.Build.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildThisFileDirectory)\..\..\..\src\Controls\src\SourceGen\Controls.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
 </Project>
