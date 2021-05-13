@@ -2,7 +2,7 @@
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public class ProgressBarStub : StubBase, IProgress
+	public class ProgressBarStub : ViewStub, IProgress
 	{
 		public double Progress { get; set; }
 

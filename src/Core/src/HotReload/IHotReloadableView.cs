@@ -1,10 +1,7 @@
 ﻿#nullable enable
-using System;
-using Microsoft.Maui.Hosting;
-
 namespace Microsoft.Maui.HotReload
 {
-	public interface IHotReloadableView : IReplaceableView, IView
+	public interface IHotReloadableView : IReplaceableView, IFrameworkElement
 	{
 		IReloadHandler ReloadHandler { get; set; }
 		void TransferState(IView newView);

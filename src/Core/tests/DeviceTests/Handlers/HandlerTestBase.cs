@@ -8,7 +8,7 @@ namespace Microsoft.Maui.DeviceTests
 {
 	public partial class HandlerTestBase<THandler, TStub> : TestBase, IDisposable
 		where THandler : IViewHandler
-		where TStub : StubBase, IView, new()
+		where TStub : FrameworkElementStub, IView, new()
 	{
 		IApplication _app;
 		IAppHost _host;

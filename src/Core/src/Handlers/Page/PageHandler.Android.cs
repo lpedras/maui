@@ -21,7 +21,7 @@ namespace Microsoft.Maui.Handlers
 			return viewGroup;
 		}
 
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			base.SetVirtualView(view);
 

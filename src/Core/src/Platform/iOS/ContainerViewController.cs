@@ -5,8 +5,9 @@ namespace Microsoft.Maui
 {
 	public class ContainerViewController : UIViewController, IReloadHandler
 	{
-		IView? _view;
-		public IView? CurrentView
+		IFrameworkElement? _view;
+
+		public IFrameworkElement? CurrentView
 		{
 			get => _view;
 			set => SetView(value);
@@ -24,7 +25,7 @@ namespace Microsoft.Maui
 		// without forcing the VC to call LoadView
 		UIView? _pendingLoadedView;
 
-		void SetView(IView? view, bool forceRefresh = false)
+		void SetView(IFrameworkElement? view, bool forceRefresh = false)
 		{
 			if (view == _view && !forceRefresh)
 				return;
@@ -40,6 +41,7 @@ namespace Microsoft.Maui
 			}
 			currentNativeView?.RemoveFromSuperview();
 			currentNativeView = null;
+
 			if (IsViewLoaded && _view != null)
 				LoadNativeView(_view);
 		}
@@ -57,7 +59,7 @@ namespace Microsoft.Maui
 				LoadNativeView(_view);
 		}
 
-		void LoadNativeView(IView view)
+		void LoadNativeView(IFrameworkElement view)
 		{
 			currentNativeView = _pendingLoadedView ?? CreateNativeView(view);
 			_pendingLoadedView = null;
@@ -66,7 +68,7 @@ namespace Microsoft.Maui
 				View.BackgroundColor = UIColor.SystemBackgroundColor;
 		}
 
-		protected virtual UIView CreateNativeView(IView view)
+		protected virtual UIView CreateNativeView(IFrameworkElement view)
 		{
 			_ = Context ?? throw new ArgumentNullException(nameof(Context));
 			_ = _view ?? throw new ArgumentNullException(nameof(view));

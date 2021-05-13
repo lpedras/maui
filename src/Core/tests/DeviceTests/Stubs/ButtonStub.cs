@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class ButtonStub : StubBase, IButton
+	public partial class ButtonStub : ViewStub, IButton
 	{
 		public string Text { get; set; }
 

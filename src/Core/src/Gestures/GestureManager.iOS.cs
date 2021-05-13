@@ -35,7 +35,7 @@ namespace Microsoft.Maui
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 
-			_virtualView = _handler.VirtualView;
+			_virtualView = (IView?)_handler.VirtualView;
 			_nativeView = (UIView?)_handler.NativeView;
 
 			if (VirtualViewGestureRecognizers != null)
@@ -100,15 +100,15 @@ namespace Microsoft.Maui
 			return new Action<UITapGestureRecognizer>((sender) =>
 			{
 				GestureManager? eventTracker = weakEventTracker.Target as GestureManager;
-				IView? view = eventTracker?._handler?.VirtualView;
+				IView? virtualView = (IView?)eventTracker?._handler?.VirtualView;
 
-				var childGestures = GetChildGestures(sender, weakEventTracker, weakRecognizer, eventTracker, view);
+				var childGestures = GetChildGestures(sender, weakEventTracker, weakRecognizer, eventTracker, virtualView);
 
 				if (childGestures?.GetChildGesturesFor<ITapGestureRecognizer>(x => x.NumberOfTapsRequired == (int)sender.NumberOfTapsRequired).Count() > 0)
 					return;
 
-				if (weakRecognizer.Target is ITapGestureRecognizer tapGestureRecognizer && view != null)
-					tapGestureRecognizer.Tapped(view);
+				if (weakRecognizer.Target is ITapGestureRecognizer tapGestureRecognizer && virtualView != null)
+					tapGestureRecognizer.Tapped(virtualView);
 			});
 		}
 
@@ -116,8 +116,8 @@ namespace Microsoft.Maui
 		{
 			return new Action<UITapGestureRecognizer>((sender) =>
 			{
-				var gestureManager = weakEventTracker.Target as GestureManager;
-				var virtualView = gestureManager?._handler?.VirtualView;
+				GestureManager? gestureManager = weakEventTracker.Target as GestureManager;
+				IView? virtualView = (IView?)gestureManager?._handler?.VirtualView;
 
 				var childGestures = GetChildGestures(sender, weakEventTracker, weakRecognizer, gestureManager, virtualView);
 

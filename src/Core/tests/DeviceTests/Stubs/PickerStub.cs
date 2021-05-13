@@ -4,7 +4,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class PickerStub : StubBase, IPicker
+	public partial class PickerStub : ViewStub, IPicker
 	{
 		public string Title { get; set; }
 

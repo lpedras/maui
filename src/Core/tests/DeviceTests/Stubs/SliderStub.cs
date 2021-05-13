@@ -1,10 +1,9 @@
 using System;
-using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class SliderStub : StubBase, ISlider
+	public partial class SliderStub : ViewStub, ISlider
 	{
 		private double _value;
 

@@ -38,14 +38,14 @@ namespace Maui.Controls.Sample.Pages
 			//SetupCompatibilityLayout();
 		}
 
-		const string loremIpsum =
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-				"Quisque ut dolor metus. Duis vel iaculis mauris, sit amet finibus mi. " +
-				"Etiam congue ornare risus, in facilisis libero tempor eget. " +
-				"Phasellus mattis mollis libero ut semper. In sit amet sapien odio. " +
-				"Sed interdum ullamcorper dui eu rutrum. Vestibulum non sagittis justo. " +
-				"Cras rutrum scelerisque elit, et porta est lobortis ac. " +
-				"Pellentesque eu ornare tortor. Sed bibendum a nisl at laoreet.";
+		const string loremIpsum =	
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+			"Quisque ut dolor metus. Duis vel iaculis mauris, sit amet finibus mi. " +
+			"Etiam congue ornare risus, in facilisis libero tempor eget. " +
+			"Phasellus mattis mollis libero ut semper. In sit amet sapien odio. " +
+			"Sed interdum ullamcorper dui eu rutrum. Vestibulum non sagittis justo. " +
+			"Cras rutrum scelerisque elit, et porta est lobortis ac. " +
+			"Pellentesque eu ornare tortor. Sed bibendum a nisl at laoreet.";
 
 		void SetupMauiLayout()
 		{
@@ -81,6 +81,17 @@ namespace Maui.Controls.Sample.Pages
 					})
 				}
 			);
+
+			var tapGestureRecognizer = new TapGestureRecognizer
+			{
+				Command = new Command(async () =>
+				{
+					await Navigation.PushAsync(new SemanticsPage());
+				})
+			};
+			var navigateLabel = new Label { BackgroundColor = Colors.PaleGreen, Text = "Tap to Navigate" };
+			navigateLabel.GestureRecognizers.Add(tapGestureRecognizer);
+			verticalStack.Add(navigateLabel);
 
 			verticalStack.Add(new Label { Text = "This should have padding", Padding = new Thickness(40), BackgroundColor = Colors.LightBlue });
 			verticalStack.Add(new Label { Text = loremIpsum });

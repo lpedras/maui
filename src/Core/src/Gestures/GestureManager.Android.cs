@@ -28,7 +28,7 @@ namespace Microsoft.Maui
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 
-			_virtualView = _handler.VirtualView;
+			_virtualView = (IView?)_handler.VirtualView;
 			_nativeView = (AView?)_handler.NativeView;
 		}
 

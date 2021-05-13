@@ -78,12 +78,15 @@ namespace Microsoft.Maui
 	{
 		public PageViewController(IPage page, IMauiContext mauiContext)
 		{
-			CurrentView = page;
+			if (page is not IView pageView)
+				return;
+
+			CurrentView = pageView;
 			Context = mauiContext;
-			LoadFirstView(page);
+			LoadFirstView(pageView);
 		}
 
-		protected override UIView CreateNativeView(IView view)
+		protected override UIView CreateNativeView(IFrameworkElement view)
 		{
 			return new PageView
 			{

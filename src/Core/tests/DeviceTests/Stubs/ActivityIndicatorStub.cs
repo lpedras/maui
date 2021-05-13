@@ -2,7 +2,7 @@
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public class ActivityIndicatorStub : StubBase, IActivityIndicator
+	public class ActivityIndicatorStub : ViewStub, IActivityIndicator
 	{
 		public bool IsRunning { get; set; }
 

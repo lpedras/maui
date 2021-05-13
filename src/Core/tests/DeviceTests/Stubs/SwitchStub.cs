@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class SwitchStub : StubBase, ISwitch
+	public partial class SwitchStub : ViewStub, ISwitch
 	{
 		public Action IsOnDelegate;
 		Color _thumbColor;

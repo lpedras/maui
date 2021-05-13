@@ -1,13 +1,14 @@
 using System;
-using Microsoft.Maui.Hosting;
 using AView = Android.Views.View;
 
 namespace Microsoft.Maui
 {
 	public static class HandlerExtensions
 	{
-		public static AView ToContainerView(this IView view, IMauiContext context) => new ContainerView(context) { CurrentView = view };
-		public static AView ToNative(this IView view, IMauiContext context)
+		public static AView ToContainerView(this IFrameworkElement view, IMauiContext context) => 
+			new ContainerView(context) { CurrentView = view };
+
+		public static AView ToNative(this IFrameworkElement view, IMauiContext context)
 		{
 			_ = view ?? throw new ArgumentNullException(nameof(view));
 			_ = context ?? throw new ArgumentNullException(nameof(context));
@@ -39,7 +40,7 @@ namespace Microsoft.Maui
 
 			handler.SetVirtualView(view);
 
-			if (!(handler.NativeView is AView result))
+			if (handler.NativeView is not AView result)
 			{
 				throw new InvalidOperationException($"Unable to convert {view} to {typeof(AView)}");
 			}

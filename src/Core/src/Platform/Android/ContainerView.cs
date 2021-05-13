@@ -1,10 +1,7 @@
 ﻿using System;
-using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using AndroidX.Fragment.App;
 using Microsoft.Maui.HotReload;
 using AView = Android.Views.View;
 
@@ -42,15 +39,15 @@ namespace Microsoft.Maui
 				}
 			}
 		}
-		IView? _view;
+		IFrameworkElement? _view;
 		readonly IMauiContext? _context;
 
-		public IView? CurrentView
+		public IFrameworkElement? CurrentView
 		{
 			get => _view;
 			set => SetView(value);
 		}
-		void SetView(IView? view, bool forceRefresh = false)
+		void SetView(IFrameworkElement? view, bool forceRefresh = false)
 		{
 			if (view == _view && !forceRefresh)
 				return;

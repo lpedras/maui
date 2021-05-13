@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class DatePickerStub : StubBase, IDatePicker
+	public partial class DatePickerStub : ViewStub, IDatePicker
 	{
 		public string Format { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class SearchBarStub : StubBase, ISearchBar
+	public partial class SearchBarStub : ViewStub, ISearchBar
 	{
 		string _text;
 

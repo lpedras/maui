@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class EditorStub : StubBase, IEditor
+	public partial class EditorStub : ViewStub, IEditor
 	{
 		private string _text;
 

@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class TimePickerStub : StubBase, ITimePicker
+	public partial class TimePickerStub : ViewStub, ITimePicker
 	{
 		TimeSpan _time;
 

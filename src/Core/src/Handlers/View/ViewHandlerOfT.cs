@@ -15,7 +15,7 @@ namespace Microsoft.Maui.Handlers
 {
 	public abstract partial class ViewHandler<TVirtualView, TNativeView> : ViewHandler<TVirtualView>,
 		IViewHandler
-		where TVirtualView : class, IView
+		where TVirtualView : class, IFrameworkElement
 #if !NETSTANDARD || IOS || ANDROID || WINDOWS
 		where TNativeView : NativeView
 #else
@@ -53,7 +53,7 @@ namespace Microsoft.Maui.Handlers
 			return NativeView;
 		}
 
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			_ = view ?? throw new ArgumentNullException(nameof(view));
 
@@ -128,7 +128,7 @@ namespace Microsoft.Maui.Handlers
 	}
 
 	public abstract partial class ViewHandler<TVirtualView> : ViewHandler
-		where TVirtualView : class, IView
+		where TVirtualView : class, IFrameworkElement
 	{
 		internal ViewHandler()
 		{

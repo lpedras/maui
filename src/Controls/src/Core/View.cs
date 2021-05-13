@@ -12,7 +12,7 @@ using Microsoft.Maui.Layouts;
 
 namespace Microsoft.Maui.Controls
 {
-	public class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView, IHotReloadableView
+	public partial class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView, IHotReloadableView
 	{
 		protected internal IGestureController GestureController => this;
 
@@ -134,7 +134,7 @@ namespace Microsoft.Maui.Controls
 			get { return _compositeGestureRecognizers ?? (_compositeGestureRecognizers = new ObservableCollection<IGestureRecognizer>()); }
 		}
 
-		public virtual IList<GestureElement> GetChildElements(Point point)
+		public virtual IList<IGestureView> GetChildElements(Point point)
 		{
 			return null;
 		}
@@ -201,7 +201,7 @@ namespace Microsoft.Maui.Controls
 
 		#region HotReload
 
-		IView IReplaceableView.ReplacedView => MauiHotReloadHelper.GetReplacedView(this) ?? this;
+		IFrameworkElement IReplaceableView.ReplacedView => MauiHotReloadHelper.GetReplacedView(this) ?? this;
 
 		IReloadHandler IHotReloadableView.ReloadHandler { get; set; }
 
@@ -223,6 +223,7 @@ namespace Microsoft.Maui.Controls
 				//TODO: if reload handler is null, Do a manual reload?
 			});
 		}
+
 		#endregion
 	}
 }

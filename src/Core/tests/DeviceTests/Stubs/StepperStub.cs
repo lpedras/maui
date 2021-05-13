@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class StepperStub : StubBase, IStepper
+	public partial class StepperStub : ViewStub, IStepper
 	{
 		public double Interval { get; set; }
 

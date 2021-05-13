@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public partial class ImageStub : StubBase, IImage, IImageSourcePartEvents
+	public partial class ImageStub : ViewStub, IImage, IImageSourcePartEvents
 	{
 		public Aspect Aspect { get; set; }
 

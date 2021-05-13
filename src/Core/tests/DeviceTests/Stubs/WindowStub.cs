@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public class WindowStub : StubBase, IWindow
+	public class WindowStub : FrameworkElementStub, IWindow
 	{
 		public IView View { get; set; }
 	}

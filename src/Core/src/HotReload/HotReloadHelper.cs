@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Hosting;
 
 namespace Microsoft.Maui.HotReload
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.HotReload
 				return false;
 			return newView.GetType() == newViewType;
 		}
-		public static IView GetReplacedView(IHotReloadableView view)
+		public static IFrameworkElement GetReplacedView(IHotReloadableView view)
 		{
 			if (!IsEnabled)
 				return view;

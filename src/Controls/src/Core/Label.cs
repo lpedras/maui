@@ -342,7 +342,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 
-		public override IList<GestureElement> GetChildElements(Point point)
+		public override IList<IGestureView> GetChildElements(Point point)
 		{
 			if (FormattedText?.Spans == null || FormattedText?.Spans.Count == 0)
 				return null;
