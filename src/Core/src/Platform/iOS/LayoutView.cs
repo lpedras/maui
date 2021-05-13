@@ -78,7 +78,7 @@ namespace Microsoft.Maui
 	{
 		public PageViewController(IPage page, IMauiContext mauiContext)
 		{
-			if (page is not IView pageView)
+			if (page is not IFrameworkElement pageView)
 				return;
 
 			CurrentView = pageView;

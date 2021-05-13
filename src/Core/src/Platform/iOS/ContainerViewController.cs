@@ -6,6 +6,12 @@ namespace Microsoft.Maui
 	public class ContainerViewController : UIViewController, IReloadHandler
 	{
 		IFrameworkElement? _view;
+		UIView? _currentNativeView;
+
+		// The handler needs this view before LoadView is called on the controller
+		// So this is used to create the first view that the handler will use
+		// without forcing the VC to call LoadView
+		UIView? _pendingLoadedView;
 
 		public IFrameworkElement? CurrentView
 		{
@@ -14,21 +20,15 @@ namespace Microsoft.Maui
 		}
 
 		public UIView? CurrentNativeView
-			=> _pendingLoadedView ?? currentNativeView;
+			=> _pendingLoadedView ?? _currentNativeView;
 
 		public IMauiContext? Context { get; set; }
-
-		UIView? currentNativeView;
-
-		// The handler needs this view before LoadView is called on the controller
-		// So this is used to create the first view that the handler will use
-		// without forcing the VC to call LoadView
-		UIView? _pendingLoadedView;
 
 		void SetView(IFrameworkElement? view, bool forceRefresh = false)
 		{
 			if (view == _view && !forceRefresh)
 				return;
+
 			_view = view;
 
 			if (view is IPage page)
@@ -39,14 +39,14 @@ namespace Microsoft.Maui
 				ihr.ReloadHandler = this;
 				MauiHotReloadHelper.AddActiveView(ihr);
 			}
-			currentNativeView?.RemoveFromSuperview();
-			currentNativeView = null;
+			_currentNativeView?.RemoveFromSuperview();
+			_currentNativeView = null;
 
 			if (IsViewLoaded && _view != null)
 				LoadNativeView(_view);
 		}
 
-		internal UIView LoadFirstView(IView view)
+		internal UIView LoadFirstView(IFrameworkElement view)
 		{
 			_pendingLoadedView = CreateNativeView(view);
 			return _pendingLoadedView;
@@ -61,9 +61,10 @@ namespace Microsoft.Maui
 
 		void LoadNativeView(IFrameworkElement view)
 		{
-			currentNativeView = _pendingLoadedView ?? CreateNativeView(view);
+			_currentNativeView = _pendingLoadedView ?? CreateNativeView(view);
 			_pendingLoadedView = null;
-			View!.AddSubview(currentNativeView);
+			View!.AddSubview(_currentNativeView);
+
 			if (view.BackgroundColor == null)
 				View.BackgroundColor = UIColor.SystemBackgroundColor;
 		}
@@ -79,11 +80,14 @@ namespace Microsoft.Maui
 		public override void ViewDidLayoutSubviews()
 		{
 			base.ViewDidLayoutSubviews();
-			if (currentNativeView == null)
+
+			if (_currentNativeView == null)
 				return;
-			currentNativeView.Frame = View!.Bounds;
+
+			_currentNativeView.Frame = View!.Bounds;
 		}
 
-		public void Reload() => SetView(CurrentView, true);
+		public void Reload() =>
+			SetView(CurrentView, true);
 	}
 }

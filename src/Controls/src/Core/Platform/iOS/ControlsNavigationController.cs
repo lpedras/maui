@@ -16,7 +16,7 @@ namespace Microsoft.Maui.Controls.Platform
 	{
 		readonly NavigationPageHandler _handler;
 		Dictionary<UIViewController, TaskCompletionSource<bool>> _completionTasks =
-							new Dictionary<UIViewController, TaskCompletionSource<bool>>();
+			new Dictionary<UIViewController, TaskCompletionSource<bool>>();
 		TaskCompletionSource<bool> _popCompletionTask;
 
 		// This holds the view controllers for each page
@@ -155,7 +155,6 @@ namespace Microsoft.Maui.Controls.Platform
 
 			e.Task = taskSource.Task;
 		}
-
 
 		void PushPage(IPage page, bool animated, IMauiContext mauiContext, TaskCompletionSource<bool> completionSource = null)
 		{

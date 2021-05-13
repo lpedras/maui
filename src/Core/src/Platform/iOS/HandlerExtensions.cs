@@ -7,6 +7,8 @@ namespace Microsoft.Maui
 	{
 		public static UIViewController ToUIViewController(this IFrameworkElement view, IMauiContext context)
 		{
+			view.ToNative(context);
+
 			if (view?.Handler is INativeViewHandler nvh && nvh.ViewController != null)
 				return nvh.ViewController;
 

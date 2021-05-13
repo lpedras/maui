@@ -114,7 +114,7 @@ namespace Microsoft.Maui.Hosting.Internal
 
 			foreach (var interfac in serviceType.GetInterfaces())
 			{
-				if (typeof(IView).IsAssignableFrom(interfac))
+				if (typeof(IFrameworkElement).IsAssignableFrom(interfac))
 					types.Add(interfac);
 			}
 
@@ -178,7 +178,7 @@ namespace Microsoft.Maui.Hosting.Internal
 
 		object? CreateInstance(Type implementationType)
 		{
-			// get constructors ordered by parameter count
+			// Get constructors ordered by parameter count
 			var constructors = implementationType.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			var matches = new (ConstructorInfo? Constructor, ParameterInfo[]? Parameters)[constructors.Length];
 			var matchesCounts = new int[constructors.Length];

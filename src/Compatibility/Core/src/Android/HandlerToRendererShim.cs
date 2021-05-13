@@ -55,8 +55,8 @@ namespace Microsoft.Maui.Controls.Compatibility
 
 			Element = element;
 
-			ViewHandler.SetVirtualView((IView)element);
-			((IView)element).Handler = ViewHandler;
+			ViewHandler.SetVirtualView(element);
+			((IFrameworkElement)element).Handler = ViewHandler;
 
 			if (Tracker == null)
 			{
