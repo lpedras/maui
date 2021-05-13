@@ -13,24 +13,28 @@ namespace Microsoft.Maui
 
 		IViewHandler? _handler;
 		bool _disposed;
+		IView? _virtualView;
+		AView? _nativeView;
 
 		public GestureManager()
 		{
 			_tapDetector = new Lazy<TapGestureDetector>(InitializeTapDetector);
 		}
 
-		IView? VirtualView => _handler?.VirtualView;
-
-		AView? NativeView => (AView?)_handler?.NativeView;
-
 		public void SetViewHandler(IViewHandler handler)
 		{
-			_handler = handler;
+			if (_isDisposed)
+				throw new ObjectDisposedException(null);
+
+			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
+
+			_virtualView = _handler.VirtualView;
+			_nativeView = (AView?)_handler.NativeView;
 		}
 
 		public bool OnTouchEvent(MotionEvent e)
 		{
-			if (NativeView == null)
+			if (_nativeView == null)
 			{
 				return false;
 			}
@@ -86,11 +90,11 @@ namespace Microsoft.Maui
 
 		TapGestureDetector InitializeTapDetector()
 		{
-			var context = NativeView?.Context;
+			var context = _nativeView?.Context;
 
-			var listener = new InnerGestureListener(new TapGestureHandler(() => VirtualView!, () =>
+			var listener = new InnerGestureListener(new TapGestureHandler(() => _virtualView!, () =>
 			{
-				if (VirtualView is IView view)
+				if (_virtualView is IView view)
 					return view.GetChildElements(Point.Zero) ?? new List<IGestureView>();
 
 				return new List<IGestureView>();

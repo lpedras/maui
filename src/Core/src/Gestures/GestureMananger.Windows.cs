@@ -16,15 +16,13 @@ namespace Microsoft.Maui
 
 		bool _isDisposed;
 		IViewHandler? _handler;
+		IView? _virtualView;
+		FrameworkElement? _nativeView;
 
 		public GestureMananger()
 		{
 			_collectionChangedHandler = OnGestureRecognizersCollectionChanged;
 		}
-
-		IView? VirtualView => _handler?.VirtualView;
-
-		FrameworkElement? NativeView => (FrameworkElement?)_handler?.NativeView;
 
 		public void SetViewHandler(IViewHandler handler)
 		{
@@ -32,10 +30,13 @@ namespace Microsoft.Maui
 				throw new ObjectDisposedException(null);
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
-			
-			if (VirtualView != null)
+
+			_virtualView = _handler.VirtualView;
+			_nativeView = (FrameworkElement?)_handler.NativeView;
+
+			if (_virtualView != null)
 			{
-				if (VirtualView is IView view)
+				if (_virtualView is IView view)
 				{
 					var gestureRecognizers = (ObservableCollection<IGestureRecognizer>)view.GestureRecognizers;
 					gestureRecognizers.CollectionChanged += _collectionChangedHandler;
@@ -61,57 +62,57 @@ namespace Microsoft.Maui
 			if (!disposing)
 				return;
 
-			if (VirtualView != null)
+			if (_virtualView != null)
 			{
-				if (VirtualView is IView view)
+				if (_virtualView is IView view)
 				{
 					var oldRecognizers = (ObservableCollection<IGestureRecognizer>)view.GestureRecognizers;
 					oldRecognizers.CollectionChanged -= _collectionChangedHandler;
 				}
 			}
 
-			if (NativeView != null)
+			if (_nativeView != null)
 			{
-				NativeView.Tapped -= OnTap;
-				NativeView.DoubleTapped -= OnDoubleTap;
+				_nativeView.Tapped -= OnTap;
+				_nativeView.DoubleTapped -= OnDoubleTap;
 			}
 		}
 
 		void UpdatingGestureRecognizers()
 		{
-			if (NativeView == null)
+			if (_nativeView == null)
 				return;
 
-			IList<IGestureRecognizer>? gestures = VirtualView?.GestureRecognizers;
+			IList<IGestureRecognizer>? gestures = _virtualView?.GestureRecognizers;
 
 			if (gestures == null)
 				return;
 
-			var children = VirtualView?.GetChildElements(Point.Zero);
+			var children = _virtualView?.GetChildElements(Point.Zero);
 			IList<ITapGestureRecognizer>? childGestures = children?.GetChildGesturesFor<ITapGestureRecognizer>().ToList();
 
 			if (gestures.GetGesturesFor<ITapGestureRecognizer>(g => g.NumberOfTapsRequired == 1).Any()
 				|| children?.GetChildGesturesFor<ITapGestureRecognizer>(g => g.NumberOfTapsRequired == 1).Any() == true)
 			{
-				NativeView.Tapped += OnTap;
+				_nativeView.Tapped += OnTap;
 			}
 		
 			if (gestures.GetGesturesFor<ITapGestureRecognizer>(g => g.NumberOfTapsRequired == 1 || g.NumberOfTapsRequired == 2).Any()
 				|| children?.GetChildGesturesFor<ITapGestureRecognizer>(g => g.NumberOfTapsRequired == 1 || g.NumberOfTapsRequired == 2).Any() == true)
 			{
-				NativeView.DoubleTapped += OnDoubleTap;
+				_nativeView.DoubleTapped += OnDoubleTap;
 			}
 		}
 
 		void OnTap(object? sender, TappedRoutedEventArgs e)
 		{
-			if (VirtualView is not IView view)
+			if (_virtualView is not IView view)
 				return;
 
 			if (view == null)
 				return;
 
-			var tapPosition = e.GetPosition(NativeView);
+			var tapPosition = e.GetPosition(_nativeView);
 			var children = view.GetChildElements(new Point(tapPosition.X, tapPosition.Y));
 
 			if (children != null)
@@ -134,13 +135,13 @@ namespace Microsoft.Maui
 
 		void OnDoubleTap(object? sender, DoubleTappedRoutedEventArgs e)
 		{
-			if (VirtualView is not IView view)
+			if (_virtualView is not IView view)
 				return;
 
 			if (view == null)
 				return;
 
-			var tapPosition = e.GetPosition(NativeView);
+			var tapPosition = e.GetPosition(_nativeView);
 			var children = view.GetChildElements(new Point(tapPosition.X, tapPosition.Y));
 
 			if (children != null)

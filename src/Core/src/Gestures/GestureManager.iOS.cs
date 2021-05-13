@@ -15,6 +15,7 @@ namespace Microsoft.Maui
 
 		bool _isDisposed;
 		IViewHandler? _handler; 
+		IView? _virtualView;
 		UIView? _nativeView;
 		UITouchEventArgs? _shouldReceiveTouch;
 
@@ -25,7 +26,7 @@ namespace Microsoft.Maui
 		}
 
 		internal ObservableCollection<IGestureRecognizer>? VirtualViewGestureRecognizers =>
-			_handler?.VirtualView?.CompositeGestureRecognizers as ObservableCollection<IGestureRecognizer>;
+			_virtualView?.CompositeGestureRecognizers as ObservableCollection<IGestureRecognizer>;
 		
 		public void SetViewHandler(IViewHandler handler)
 		{
@@ -33,6 +34,8 @@ namespace Microsoft.Maui
 				throw new ObjectDisposedException(null);
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
+
+			_virtualView = _handler.VirtualView;
 			_nativeView = (UIView?)_handler.NativeView;
 
 			if (VirtualViewGestureRecognizers != null)
