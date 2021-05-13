@@ -15,6 +15,9 @@ namespace Microsoft.Maui.Handlers
 {
 	public abstract partial class ViewHandler : IViewHandler
 	{
+		bool _hasContainer;
+		GestureManager? _gestureManager;
+
 		public static PropertyMapper<IView> ViewMapper = new PropertyMapper<IView>
 		{
 			[nameof(IView.AutomationId)] = MapAutomationId,
@@ -30,9 +33,8 @@ namespace Microsoft.Maui.Handlers
 
 		internal ViewHandler()
 		{
-		}
 
-		bool _hasContainer;
+		}
 
 		public bool HasContainer
 		{
@@ -77,6 +79,8 @@ namespace Microsoft.Maui.Handlers
 
 		private protected void ConnectHandler(NativeView? nativeView)
 		{
+			_gestureManager = new GestureManager();
+			_gestureManager.SetViewHandler(this);
 		}
 
 		partial void DisconnectingHandler(NativeView? nativeView);
@@ -84,6 +88,12 @@ namespace Microsoft.Maui.Handlers
 		private protected void DisconnectHandler(NativeView? nativeView)
 		{
 			DisconnectingHandler(nativeView);
+			
+			if (_gestureManager != null)
+			{
+				_gestureManager.Dispose();
+				_gestureManager = null;
+			}
 
 			if (VirtualView != null)
 				VirtualView.Handler = null;
