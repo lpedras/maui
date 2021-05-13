@@ -28,8 +28,8 @@ namespace Microsoft.Maui
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 
-			_virtualView = (IView?)_handler.VirtualView;
-			_nativeView = (AView?)_handler.NativeView;
+			_virtualView = _handler.VirtualView as IView;
+			_nativeView = _handler.NativeView as AView;
 		}
 
 		public bool OnTouchEvent(MotionEvent e)

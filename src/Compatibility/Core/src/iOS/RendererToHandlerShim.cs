@@ -81,12 +81,12 @@ namespace Microsoft.Maui.Controls.Compatibility
 			VirtualView.Handler = null;
 		}
 
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			if (VisualElementRenderer == null)
 			{
-				var renderer = Controls.Internals.Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(view)
-										   ?? new Microsoft.Maui.Controls.Compatibility.Platform.iOS.Platform.DefaultRenderer();
+				var renderer = Internals.Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(view)
+					?? new Platform.iOS.Platform.DefaultRenderer();
 
 				SetupRenderer(renderer);
 			}

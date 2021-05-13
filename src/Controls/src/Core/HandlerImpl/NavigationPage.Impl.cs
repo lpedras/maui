@@ -31,5 +31,4 @@ namespace Microsoft.Maui.Controls
 		IFrameworkElement Content =>
 			CurrentPage;
 	}
-
 }

@@ -83,12 +83,12 @@ namespace Microsoft.Maui.Controls.Compatibility
 			VirtualView.Handler = null;
 		}
 
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			if (VisualElementRenderer == null && Context != null)
 			{
 				var renderer = Internals.Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(view, Context)
-										   ?? new Platform.Android.AppCompat.Platform.DefaultRenderer(Context);
+					?? new Platform.Android.AppCompat.Platform.DefaultRenderer(Context);
 
 				SetupRenderer(renderer);
 			}

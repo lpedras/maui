@@ -26,7 +26,7 @@ namespace Microsoft.Maui.Hosting.Internal
 			_constructorInjection = constructorInjection;
 			_singletons = new ConcurrentDictionary<ServiceDescriptor, object?>();
 
-			// to make things easier, just add the provider
+			// To make things easier, just add the provider
 			collection.AddSingleton<IServiceProvider>(this);
 		}
 
@@ -73,7 +73,7 @@ namespace Microsoft.Maui.Hosting.Internal
 
 		bool TryGetServiceDescriptors(ref Type serviceType, out ServiceDescriptor? single, out IEnumerable<ServiceDescriptor>? enumerable)
 		{
-			// fast path for exact match
+			// Fast path for exact match
 			{
 				var descriptor = GetServiceDescriptor(serviceType);
 				if (descriptor != null)
@@ -84,7 +84,7 @@ namespace Microsoft.Maui.Hosting.Internal
 				}
 			}
 
-			// try match IEnumerable<TServiceType>
+			// Try match IEnumerable<TServiceType>
 			if (serviceType.IsGenericType && serviceType.GetGenericTypeDefinition() == EnumerableType)
 			{
 				serviceType = serviceType.GenericTypeArguments[0];
@@ -199,7 +199,7 @@ namespace Microsoft.Maui.Hosting.Internal
 			if (!found)
 				throw new InvalidOperationException($"The type '{implementationType.Name}' did not have any public or internal constructors.");
 
-			// go through in reverse order
+			// Go through in reverse order
 			for (var m = matches.Length - 1; m >= 0; m--)
 			{
 				var (constructor, parameters) = matches[m];
@@ -207,11 +207,11 @@ namespace Microsoft.Maui.Hosting.Internal
 				{
 					var paramCount = parameters.Length;
 
-					// we are at a ctor that has no params, so just use that
+					// We are at a ctor that has no params, so just use that
 					if (paramCount == 0)
 						return constructor.Invoke(null);
 
-					// try find a ctor that matches what we have in the service collection
+					// Try find a ctor that matches what we have in the service collection
 					var validConstructor = true;
 					var paramDescriptors = new (Type ServiceType, ServiceDescriptor? Single, IEnumerable<ServiceDescriptor>? Enumerable, object? Value)[paramCount];
 					for (var i = 0; i < paramCount; i++)
@@ -231,7 +231,7 @@ namespace Microsoft.Maui.Hosting.Internal
 						}
 					}
 
-					// we found something, so now inflate
+					// We found something, so now inflate
 					if (validConstructor)
 					{
 						var paramValues = new object?[paramCount];

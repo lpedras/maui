@@ -9,10 +9,11 @@ namespace Microsoft.Maui.HotReload
 {
 	public static class HotReloadExtensions
 	{
-		public static void CheckHandlers(this IView view)
+		public static void CheckHandlers(this IFrameworkElement view)
 		{
 			if (view?.Handler == null)
 				return;
+
 			//So we can be smart and keep all old handlers
 			//However with the Old Legacy Shim layouts, this causes issues.
 			//So for now I am just going to kill all handlers, so everything needs rebuilt

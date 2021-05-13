@@ -17,15 +17,16 @@ namespace Microsoft.Maui.Hosting.Internal
 		public IViewHandler? GetHandler(Type type)
 			=> GetService(type) as IViewHandler;
 
-		public IViewHandler? GetHandler<T>() where T : IView
+		public IViewHandler? GetHandler<T>() where T : IFrameworkElement
 			=> GetHandler(typeof(T));
 
-		public Type? GetHandlerType(Type iview)
+		public Type? GetHandlerType(Type view)
 		{
-			foreach (var descriptor in GetServiceDescriptors(iview))
+			foreach (var descriptor in GetServiceDescriptors(view))
 			{
 				return descriptor.ImplementationType;
 			}
+
 			return null;
 		}
 

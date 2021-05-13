@@ -99,7 +99,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 			OnElementChanged(this, new VisualElementChangedEventArgs(null, _renderer.Element));
 		}
 
-		static IList<GestureElement> GetChildGestures(
+		static IList<IGestureView> GetChildGestures(
 			NativeGestureRecognizer sender,
 			WeakReference weakEventTracker, WeakReference weakRecognizer, EventTracker eventTracker, View view)
 		{

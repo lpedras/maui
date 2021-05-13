@@ -62,7 +62,7 @@ namespace Microsoft.Maui.Controls
 		{
 			Device.BeginInvokeOnMainThread(() =>
 			{
-				(this as IView)?.CheckHandlers();
+				this.CheckHandlers();
 				var reloadHandler = ((IHotReloadableView)this).ReloadHandler;
 				reloadHandler?.Reload();
 				//TODO: if reload handler is null, Do a manual reload?

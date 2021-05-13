@@ -27,7 +27,7 @@ namespace Microsoft.Maui
 
 		internal ObservableCollection<IGestureRecognizer>? VirtualViewGestureRecognizers =>
 			_virtualView?.CompositeGestureRecognizers as ObservableCollection<IGestureRecognizer>;
-		
+
 		public void SetViewHandler(IViewHandler handler)
 		{
 			if (_isDisposed)
@@ -35,8 +35,8 @@ namespace Microsoft.Maui
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 
-			_virtualView = (IView?)_handler.VirtualView;
-			_nativeView = (UIView?)_handler.NativeView;
+			_virtualView = _handler.VirtualView as IView;
+			_nativeView = _handler.NativeView as UIView;
 
 			if (VirtualViewGestureRecognizers != null)
 				VirtualViewGestureRecognizers.CollectionChanged += _collectionChangedHandler;

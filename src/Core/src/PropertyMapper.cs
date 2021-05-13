@@ -136,7 +136,7 @@ namespace Microsoft.Maui
 			=> this[key] = action;
 
 		public void Add(string key, Action<TViewHandler, TVirtualView> action, bool ignoreOnStartup)
-			=> _mapper[key] = ((r, v) => action?.Invoke((TViewHandler)r, (TVirtualView)v), ignoreOnStartup);
+			=> _mapper[key] = ((handler, view) => action?.Invoke((TViewHandler)handler, (TVirtualView)view), ignoreOnStartup);
 
 		IEnumerator IEnumerable.GetEnumerator() => _mapper.GetEnumerator();
 	}

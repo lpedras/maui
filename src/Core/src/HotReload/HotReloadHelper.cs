@@ -84,7 +84,6 @@ namespace Microsoft.Maui.HotReload
 
 		static void TransferState(IHotReloadableView oldView, IView newView)
 		{
-
 			oldView.TransferState(newView);
 		}
 
@@ -139,9 +138,7 @@ namespace Microsoft.Maui.HotReload
 					RegisterHandler(h, newViewType);
 				}
 			}
-
 		}
-
 
 		static void RegisterHandler(KeyValuePair<Type, Type> pair, Type newHandler)
 		{

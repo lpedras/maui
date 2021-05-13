@@ -1,5 +1,4 @@
 #nullable enable
-
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -77,7 +76,7 @@ namespace Microsoft.Maui.Controls
 			}
 		}
 
-		IView IWindow.View
+		IFrameworkElement IWindow.View
 		{
 			get => Page ?? throw new InvalidOperationException("No page was set on the window.");
 			set => Page = (Page)value;

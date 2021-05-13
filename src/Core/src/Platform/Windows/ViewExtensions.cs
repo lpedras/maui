@@ -8,10 +8,10 @@ namespace Microsoft.Maui
 {
 	public static class ViewExtensions
 	{
-		public static void UpdateIsEnabled(this FrameworkElement nativeView, IView view) =>
+		public static void UpdateIsEnabled(this FrameworkElement nativeView, IFrameworkElement view) =>
 			(nativeView as Control)?.UpdateIsEnabled(view.IsEnabled);
 
-		public static void UpdateBackgroundColor(this FrameworkElement nativeView, IView view)
+		public static void UpdateBackgroundColor(this FrameworkElement nativeView, IFrameworkElement view)
 		{
 			if (nativeView is Control control)
 				control.UpdateBackgroundColor(view.BackgroundColor);
@@ -31,10 +31,10 @@ namespace Microsoft.Maui
 		public static void UpdateBackgroundColor(this Panel nativeControl, Color color, UI.Xaml.Media.Brush? defaultBrush = null) =>
 			nativeControl.Background = color?.ToNative() ?? defaultBrush ?? nativeControl.Background;
 
-		public static void UpdateAutomationId(this FrameworkElement nativeView, IView view) =>
+		public static void UpdateAutomationId(this FrameworkElement nativeView, IFrameworkElement view) =>
 			AutomationProperties.SetAutomationId(nativeView, view.AutomationId);
 
-		public static void UpdateSemantics(this FrameworkElement nativeView, IView view)
+		public static void UpdateSemantics(this FrameworkElement nativeView, IFrameworkElement view)
 		{
 			var semantics = view.Semantics;
 			if (semantics == null)
@@ -61,18 +61,18 @@ namespace Microsoft.Maui
 				nativeControl.SetValue(property, value);
 		}
 
-		public static void InvalidateMeasure(this FrameworkElement nativeView, IView view) 
+		public static void InvalidateMeasure(this FrameworkElement nativeView, IFrameworkElement view) 
 		{
 			nativeView.InvalidateMeasure();
 		}
 
-		public static void UpdateWidth(this FrameworkElement nativeView, IView view)
+		public static void UpdateWidth(this FrameworkElement nativeView, IFrameworkElement view)
 		{
 			// WinUI uses NaN for "unspecified"
 			nativeView.Width = view.Width >= 0 ? view.Width : double.NaN;
 		}
 
-		public static void UpdateHeight(this FrameworkElement nativeView, IView view)
+		public static void UpdateHeight(this FrameworkElement nativeView, IFrameworkElement view)
 		{
 			// WinUI uses NaN for "unspecified"
 			nativeView.Height = view.Height >= 0 ? view.Height : double.NaN;

@@ -6,7 +6,6 @@ namespace Microsoft.Maui
 	/// </summary>
 	public interface ILayout : IView, IContainer
 	{
-
 		/// <summary>
 		/// Gets the Layout Handler.
 		/// </summary>

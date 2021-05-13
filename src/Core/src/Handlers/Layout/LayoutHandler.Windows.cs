@@ -14,7 +14,7 @@ namespace Microsoft.Maui.Handlers
 			NativeView.Children.Add(child.ToNative(MauiContext));
 		}
 
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			base.SetVirtualView(view);
 

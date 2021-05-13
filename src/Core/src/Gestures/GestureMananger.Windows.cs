@@ -31,8 +31,8 @@ namespace Microsoft.Maui
 
 			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 
-			_virtualView = (IView?)_handler.VirtualView;
-			_nativeView = (FrameworkElement?)_handler.NativeView;
+			_virtualView = _handler.VirtualView as IView;
+			_nativeView = _handler.NativeView as FrameworkElement;
 
 			if (_virtualView != null)
 			{

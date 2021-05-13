@@ -1,5 +1,4 @@
 using System;
-using Microsoft.Maui.Hosting;
 using UIKit;
 
 namespace Microsoft.Maui
@@ -8,7 +7,6 @@ namespace Microsoft.Maui
 	{
 		public static UIViewController ToUIViewController(this IFrameworkElement view, IMauiContext context)
 		{
-			var nativeView = view.ToNative(context);
 			if (view?.Handler is INativeViewHandler nvh && nvh.ViewController != null)
 				return nvh.ViewController;
 

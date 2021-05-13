@@ -6,7 +6,7 @@ namespace Microsoft.Maui.Handlers
 {
 	public partial class PageHandler : ViewHandler<IPage, PagePanel>
 	{
-		public override void SetVirtualView(IView view)
+		public override void SetVirtualView(IFrameworkElement view)
 		{
 			base.SetVirtualView(view);
 

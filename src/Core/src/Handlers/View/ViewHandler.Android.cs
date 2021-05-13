@@ -14,12 +14,12 @@ namespace Microsoft.Maui.Handlers
 			if (nativeView.IsAlive() && AccessibilityDelegate != null)
 			{
 				AccessibilityDelegate.Handler = null;
-				AndroidX.Core.View.ViewCompat.SetAccessibilityDelegate(nativeView, null);
+				ViewCompat.SetAccessibilityDelegate(nativeView, null);
 				AccessibilityDelegate = null;
 			}
 		}
 
-		static partial void MappingSemantics(IViewHandler handler, IView view)
+		static partial void MappingSemantics(IViewHandler handler, IFrameworkElement view)
 		{
 			if (view.Semantics != null &&
 				handler is ViewHandler viewHandler &&
