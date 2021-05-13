@@ -12,7 +12,7 @@ namespace Microsoft.Maui
 		readonly Lazy<TapGestureDetector> _tapDetector;
 
 		IViewHandler? _handler;
-		bool _disposed;
+		bool _isDisposed;
 		IView? _virtualView;
 		AView? _nativeView;
 
@@ -57,12 +57,12 @@ namespace Microsoft.Maui
 
 		protected void Dispose(bool disposing)
 		{
-			if (_disposed)
+			if (_isDisposed)
 			{
 				return;
 			}
 
-			_disposed = true;
+			_isDisposed = true;
 
 			if (disposing)
 			{
