@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -126,7 +127,7 @@ namespace Microsoft.Maui
 				if (recognizers == null)
 					return;
 
-				var tapGestureRecognizer = ((IChildGestureRecognizer)weakRecognizer.Target).GestureRecognizer as ITapGestureRecognizer;
+				var tapGestureRecognizer = (weakRecognizer.Target as IChildGestureRecognizer)?.GestureRecognizer as ITapGestureRecognizer;
 
 				foreach (var item in recognizers)
 					if (item == tapGestureRecognizer && virtualView != null)
@@ -282,7 +283,7 @@ namespace Microsoft.Maui
 			return false;
 		}
 
-		void OnGestureRecognizersCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+		void OnGestureRecognizersCollectionChanged(object? sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
 		{
 			LoadRecognizers();
 		}
