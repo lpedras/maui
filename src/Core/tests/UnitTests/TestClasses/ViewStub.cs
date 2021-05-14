@@ -1,36 +1,36 @@
-using System;
+using System.Collections.Generic;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Primitives;
 
 namespace Microsoft.Maui.UnitTests
 {
-	class ViewStub : IViewStub
+	public class ViewStub : IView
 	{
-		public bool IsEnabled => throw new NotImplementedException();
+		public Thickness Margin { get; set; }
 
-		public Color BackgroundColor => throw new NotImplementedException();
+		public IList<IGestureRecognizer> GestureRecognizers { get; set; }
 
-		public Rectangle Frame => throw new NotImplementedException();
+		public IList<IGestureRecognizer> CompositeGestureRecognizers { get; set; }
 
-		public IViewHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public bool IsEnabled { get; set; } = true;
 
-		public IFrameworkElement Parent => throw new NotImplementedException();
+		public Color BackgroundColor { get; set; }
 
-		public Size DesiredSize => throw new NotImplementedException();
+		public Rectangle Frame { get; set; }
 
-		public bool IsMeasureValid => throw new NotImplementedException();
+		public double Width { get; set; } = 20;
 
-		public bool IsArrangeValid => throw new NotImplementedException();
+		public double Height { get; set; } = 20;
 
-		public double Width => throw new NotImplementedException();
+		public IViewHandler Handler { get; set; }
 
-		public double Height => throw new NotImplementedException();
+		public IFrameworkElement Parent { get; set; }
 
-		public Thickness Margin => throw new NotImplementedException();
+		public Size DesiredSize { get; set; } = new Size(20, 20);
 
-		public string AutomationId => throw new NotImplementedException();
+		public string AutomationId { get; set; }
 
-		public FlowDirection FlowDirection => throw new NotImplementedException();
+		public FlowDirection FlowDirection { get; set; }
 
 		public LayoutAlignment HorizontalLayoutAlignment { get; set; }
 
@@ -38,24 +38,29 @@ namespace Microsoft.Maui.UnitTests
 
 		public Semantics Semantics { get; set; } = new Semantics();
 
+
 		public Size Arrange(Rectangle bounds)
 		{
-			throw new NotImplementedException();
+			Frame = bounds;
+			DesiredSize = bounds.Size;
+
+			return DesiredSize;
 		}
+
+		public IList<IGestureView> GetChildElements(Point point) =>
+			null;
 
 		public void InvalidateArrange()
 		{
-			throw new NotImplementedException();
 		}
 
 		public void InvalidateMeasure()
 		{
-			throw new NotImplementedException();
 		}
 
 		public Size Measure(double widthConstraint, double heightConstraint)
 		{
-			throw new NotImplementedException();
+			return new Size(widthConstraint, heightConstraint);
 		}
 	}
 }
