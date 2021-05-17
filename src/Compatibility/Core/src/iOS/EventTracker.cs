@@ -24,6 +24,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration.macOSSpecific;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 #endif
 {
+	[PortHandler("Partially ported")]
 	public class EventTracker : IDisposable
 	{
 		readonly NotifyCollectionChangedEventHandler _collectionChangedHandler;

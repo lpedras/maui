@@ -39,6 +39,11 @@ namespace Microsoft.Maui
 				return false;
 			}
 
+			if (_virtualView != null && !_virtualView.IsEnabled)
+			{
+				return false;
+			}
+
 			if (!DetectorsValid())
 			{
 				return false;

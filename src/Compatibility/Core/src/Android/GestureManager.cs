@@ -10,6 +10,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
+	[PortHandler("Partially ported")]
 	internal class GestureManager : IDisposable
 	{
 		IVisualElementRenderer _renderer;
