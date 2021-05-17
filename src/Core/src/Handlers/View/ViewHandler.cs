@@ -16,7 +16,6 @@ namespace Microsoft.Maui.Handlers
 	public abstract partial class ViewHandler : IViewHandler
 	{
 		bool _hasContainer;
-		GestureManager? _gestureManager;
 
 		public static PropertyMapper<IFrameworkElement> ViewMapper = new PropertyMapper<IFrameworkElement>
 		{
@@ -79,13 +78,19 @@ namespace Microsoft.Maui.Handlers
 
 		public abstract void NativeArrange(Rectangle frame);
 
+		internal GestureManager? GestureManager { get; private set; }
+
+		partial void ConnectingHandler(NativeView? nativeView);
+
 		private protected void ConnectHandler(NativeView? nativeView)
 		{
 			if (VirtualView is IGestureController)
 			{
-				_gestureManager = new GestureManager();
-				_gestureManager.SetViewHandler(this);
+				GestureManager = new GestureManager();
+				GestureManager.SetViewHandler(this);
 			}
+
+			ConnectingHandler(nativeView);
 		}
 
 		partial void DisconnectingHandler(NativeView? nativeView);
@@ -94,10 +99,10 @@ namespace Microsoft.Maui.Handlers
 		{
 			DisconnectingHandler(nativeView);
 			
-			if (_gestureManager != null)
+			if (GestureManager != null)
 			{
-				_gestureManager.Dispose();
-				_gestureManager = null;
+				GestureManager.Dispose();
+				GestureManager = null;
 			}
 
 			if (VirtualView != null)

@@ -32,7 +32,7 @@ namespace Microsoft.Maui
 			_nativeView = _handler.NativeView as AView;
 		}
 
-		public bool OnTouchEvent(MotionEvent e)
+		public bool OnTouchEvent(MotionEvent? e)
 		{
 			if (_nativeView == null)
 			{
