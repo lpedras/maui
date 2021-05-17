@@ -36,7 +36,7 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 
 		public LayoutAlignment VerticalLayoutAlignment { get; set; }
 
-		public Semantics Semantics => throw new NotImplementedException();
+		public Semantics Semantics => new Semantics();
 
 		public Size Arrange(Rectangle bounds)
 		{
