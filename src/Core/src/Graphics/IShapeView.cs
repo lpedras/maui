@@ -13,12 +13,12 @@
 		/// <summary>
 		/// Indicates the brush used to paint the shape's interior.
 		/// </summary>
-		Color Fill { get; }
+		Paint? Fill { get; }
 
 		/// <summary>
 		/// Indicates the color used to paint the shape's outline.
 		/// </summary>
-		Color Stroke { get; }
+		Paint? Stroke { get; }
 
 		/// <summary>
 		/// Represents a collection of double values that indicate the pattern of dashes and gaps
