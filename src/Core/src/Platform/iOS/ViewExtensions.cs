@@ -14,6 +14,8 @@ namespace Microsoft.Maui
 
 		public static void UpdateIsEnabled(this UIView nativeView, IFrameworkElement view)
 		{
+			nativeView.UpdateInteractionEnabled(view);
+
 			if (nativeView is not UIControl uiControl)
 				return;
 
@@ -199,6 +201,12 @@ namespace Microsoft.Maui
 			}
 
 			return false;
+		}
+
+		internal static void UpdateInteractionEnabled(this UIView nativeView, IFrameworkElement view)
+		{
+			// TODO: Also check if InputTransparent is false
+			nativeView.UserInteractionEnabled = view.IsEnabled;
 		}
 
 		static void InsertBackgroundLayer(this UIView control, CALayer backgroundLayer, int index = -1)
