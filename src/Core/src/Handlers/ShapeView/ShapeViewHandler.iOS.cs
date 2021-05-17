@@ -2,7 +2,7 @@
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class ShapeViewHandler : AbstractViewHandler<IShapeView, MauiShapeView>
+	public partial class ShapeViewHandler : ViewHandler<IShapeView, MauiShapeView>
 	{
 		protected override MauiShapeView CreateNativeView()
 		{

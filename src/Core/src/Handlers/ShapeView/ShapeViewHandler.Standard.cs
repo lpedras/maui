@@ -3,7 +3,7 @@ using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class ShapeViewHandler : AbstractViewHandler<IShapeView, object>
+	public partial class ShapeViewHandler : ViewHandler<IShapeView, object>
 	{
 		protected override object CreateNativeView() => throw new NotImplementedException();
 

@@ -1,12 +1,10 @@
-﻿using System.Graphics;
-
-namespace Microsoft.Maui.Graphics
+﻿namespace Microsoft.Maui.Graphics
 {
 	public abstract class Shape : IShape
 	{
-		public Color Fill { get; set; }
+		public Paint? Fill { get; set; }
 
-		public Color Stroke { get; set; }
+		public Paint? Stroke { get; set; }
 
 		public double StrokeThickness { get; set; }
 

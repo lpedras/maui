@@ -1,6 +1,4 @@
-﻿using System.Graphics;
-
-namespace Microsoft.Maui.Graphics
+﻿namespace Microsoft.Maui.Graphics
 {
 	public class Rectangle : Shape
 	{

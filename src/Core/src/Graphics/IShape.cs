@@ -1,6 +1,4 @@
-﻿using System.Graphics;
-
-namespace Microsoft.Maui.Graphics
+﻿namespace Microsoft.Maui.Graphics
 {
 	/// <summary>
 	/// Provides a base definition class for shape elements, such as
