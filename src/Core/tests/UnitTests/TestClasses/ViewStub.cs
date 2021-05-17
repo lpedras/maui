@@ -4,7 +4,7 @@ using Microsoft.Maui.Primitives;
 
 namespace Microsoft.Maui.UnitTests
 {
-	public class ViewStub : IView
+	public class ViewStub : IViewStub
 	{
 		public Thickness Margin { get; set; }
 
