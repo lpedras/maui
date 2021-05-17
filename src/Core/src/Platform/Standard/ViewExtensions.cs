@@ -4,7 +4,9 @@ namespace Microsoft.Maui
 	{
 		public static void UpdateIsEnabled(this object nativeView, IFrameworkElement view) { }
 
-		public static void UpdateBackgroundColor(this object nativeView, IFrameworkElement view) { }
+		public static void UpdateVisibility(this object nativeView, IFrameworkElement view) { }
+
+		public static void UpdateBackground(this object nativeView, IFrameworkElement view) { }
 
 		public static void UpdateAutomationId(this object nativeView, IFrameworkElement view) { }
 

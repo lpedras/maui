@@ -10,11 +10,15 @@ namespace Microsoft.Maui.UnitTests
 
 		public IList<IGestureRecognizer> GestureRecognizers { get; set; }
 
+		public Visibility Visibility { get; set; } = Visibility.Visible;
+
 		public IList<IGestureRecognizer> CompositeGestureRecognizers { get; set; }
 
 		public bool IsEnabled { get; set; } = true;
 
-		public Color BackgroundColor { get; set; }
+		public double Opacity { get; set; } = 1.0d;
+
+		public Paint Background { get; set; }
 
 		public Rectangle Frame { get; set; }
 
@@ -36,7 +40,7 @@ namespace Microsoft.Maui.UnitTests
 
 		public LayoutAlignment VerticalLayoutAlignment { get; set; }
 
-		public Semantics Semantics { get; set; } = new Semantics();
+		public Semantics Semantics { get; set; }
 
 
 		public Size Arrange(Rectangle bounds)

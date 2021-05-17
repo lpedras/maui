@@ -20,7 +20,8 @@ namespace Microsoft.Maui.Handlers
 		public static PropertyMapper<IFrameworkElement> ViewMapper = new PropertyMapper<IFrameworkElement>
 		{
 			[nameof(IFrameworkElement.AutomationId)] = MapAutomationId,
-			[nameof(IFrameworkElement.BackgroundColor)] = MapBackgroundColor,
+			[nameof(IFrameworkElement.Visibility)] = MapVisibility,
+			[nameof(IFrameworkElement.Background)] = MapBackground,
 			[nameof(IFrameworkElement.Width)] = MapWidth,
 			[nameof(IFrameworkElement.Height)] = MapHeight,
 			[nameof(IFrameworkElement.IsEnabled)] = MapIsEnabled,
@@ -126,9 +127,14 @@ namespace Microsoft.Maui.Handlers
 			((NativeView?)handler.NativeView)?.UpdateIsEnabled(view);
 		}
 
-		public static void MapBackgroundColor(IViewHandler handler, IFrameworkElement view)
+		public static void MapVisibility(IViewHandler handler, IFrameworkElement view)
 		{
-			((NativeView?)handler.NativeView)?.UpdateBackgroundColor(view);
+			((NativeView?)handler.NativeView)?.UpdateVisibility(view);
+		}
+
+		public static void MapBackground(IViewHandler handler, IFrameworkElement view)
+		{
+			((NativeView?)handler.NativeView)?.UpdateBackground(view);
 		}
 
 		public static void MapAutomationId(IViewHandler handler, IFrameworkElement view)
