@@ -44,7 +44,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			if (_childView == null)
 				return;
 
-			Rectangle bounds = GetBounds(_isFlyout, l, t, r, b);
+			Graphics.Rectangle bounds = GetBounds(_isFlyout, l, t, r, b);
 			if (_isFlyout)
 				FlyoutPageController.FlyoutBounds = bounds;
 			else
@@ -265,7 +265,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			_childView?.ClearValue(APlatform.RendererProperty);
 		}
 
-		Rectangle GetBounds(bool isFlyoutPage, int left, int top, int right, int bottom)
+		Graphics.Rectangle GetBounds(bool isFlyoutPage, int left, int top, int right, int bottom)
 		{
 			double width = Context.FromPixels(right - left);
 			double height = Context.FromPixels(bottom - top);
@@ -289,7 +289,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			}
 
 			double padding = supressPadding ? 0 : Context.FromPixels(TopPadding);
-			return new Rectangle(xPos, padding, width, height - padding);
+			return new Graphics.Rectangle(xPos, padding, width, height - padding);
 		}
 
 		protected void SetDefaultBackgroundColor(IVisualElementRenderer renderer)

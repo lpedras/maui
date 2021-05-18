@@ -8,7 +8,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 #endif
 {
-	public class PathRenderer : ShapeRenderer<Path, PathView>
+	public class PathRenderer : ShapeRenderer<Shapes.Path, PathView>
 	{
 		[Microsoft.Maui.Controls.Internals.Preserve(Conditional = true)]
 		public PathRenderer()
@@ -16,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Path> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Path> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -35,7 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Path.DataProperty.PropertyName || args.PropertyName == Path.RenderTransformProperty.PropertyName)
+			if (args.PropertyName == Shapes.Path.DataProperty.PropertyName || args.PropertyName == Shapes.Path.RenderTransformProperty.PropertyName)
 				UpdatePath();
 		}
 

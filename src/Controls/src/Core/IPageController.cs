@@ -1,11 +1,10 @@
 using System.Collections.ObjectModel;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
 	public interface IPageController : IVisualElementController
 	{
-		Rectangle ContainerArea { get; set; }
+		Graphics.Rectangle ContainerArea { get; set; }
 
 		bool IgnoresContainerArea { get; set; }
 

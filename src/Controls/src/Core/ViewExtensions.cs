@@ -54,20 +54,20 @@ namespace Microsoft.Maui.Controls
 			return AnimateTo(view, view.Opacity, opacity, nameof(FadeTo), (v, value) => v.Opacity = value, length, easing);
 		}
 
-		public static Task<bool> LayoutTo(this VisualElement view, Rectangle bounds, uint length = 250, Easing easing = null)
+		public static Task<bool> LayoutTo(this VisualElement view, Graphics.Rectangle bounds, uint length = 250, Easing easing = null)
 		{
 			if (view == null)
 				throw new ArgumentNullException(nameof(view));
 
-			Rectangle start = view.Bounds;
-			Func<double, Rectangle> computeBounds = progress =>
+			Graphics.Rectangle start = view.Bounds;
+			Func<double, Graphics.Rectangle> computeBounds = progress =>
 			{
 				double x = start.X + (bounds.X - start.X) * progress;
 				double y = start.Y + (bounds.Y - start.Y) * progress;
 				double w = start.Width + (bounds.Width - start.Width) * progress;
 				double h = start.Height + (bounds.Height - start.Height) * progress;
 
-				return new Rectangle(x, y, w, h);
+				return new Graphics.Rectangle(x, y, w, h);
 			};
 
 			return AnimateTo(view, 0, 1, nameof(LayoutTo), (v, value) => v.Layout(computeBounds(value)), length, easing);

@@ -107,7 +107,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		public virtual void SetElementSize(Size size)
 		{
-			Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Element.Layout(new Graphics.Rectangle(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public override void ViewDidLayoutSubviews()

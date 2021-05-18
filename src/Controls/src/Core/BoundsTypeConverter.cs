@@ -34,9 +34,9 @@ namespace Microsoft.Maui.Controls
 				}
 
 				if (hasX && hasY && xywh.Length == 2)
-					return new Rectangle(x, y, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
+					return new Graphics.Rectangle(x, y, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize);
 				if (hasX && hasY && hasW && hasH && xywh.Length == 4)
-					return new Rectangle(x, y, w, h);
+					return new Graphics.Rectangle(x, y, w, h);
 			}
 
 			throw new InvalidOperationException($"Cannot convert \"{value}\" into {typeof(Rectangle)}");
@@ -44,7 +44,7 @@ namespace Microsoft.Maui.Controls
 
 		public override string ConvertToInvariantString(object value)
 		{
-			if (!(value is Rectangle rect))
+			if (!(value is Graphics.Rectangle rect))
 				throw new NotSupportedException();
 			return $"{rect.X.ToString(CultureInfo.InvariantCulture)}, {rect.Y.ToString(CultureInfo.InvariantCulture)}, {(rect.Width == AbsoluteLayout.AutoSize ? nameof(AbsoluteLayout.AutoSize) : rect.Width.ToString(CultureInfo.InvariantCulture))}, {(rect.Height == AbsoluteLayout.AutoSize ? nameof(AbsoluteLayout.AutoSize) : rect.Height.ToString(CultureInfo.InvariantCulture))}";
 		}

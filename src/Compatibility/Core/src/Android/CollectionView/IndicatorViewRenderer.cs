@@ -9,6 +9,7 @@ using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Graphics;
 using AColor = Android.Graphics.Color;
 using AShapes = Android.Graphics.Drawables.Shapes;
+using AShapeDrawable = Android.Graphics.Drawables.ShapeDrawable;
 using AShapeType = Android.Graphics.Drawables.ShapeType;
 using AView = Android.Views.View;
 
@@ -300,7 +301,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			AddView(renderer.View);
 
 			var indicatorLayoutSizeRequest = IndicatorView.IndicatorLayout.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			IndicatorView.IndicatorLayout.Layout(new Rectangle(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
+			IndicatorView.IndicatorLayout.Layout(new Graphics.Rectangle(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
 		}
 
 		void UpdateIndicators()
@@ -338,12 +339,12 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		Drawable GetShape(AColor color)
 		{
 			var indicatorSize = IndicatorView.IndicatorSize;
-			ShapeDrawable shape;
+			AShapeDrawable shape;
 
 			if (_shapeType == AShapeType.Oval)
-				shape = new ShapeDrawable(new AShapes.OvalShape());
+				shape = new AShapeDrawable(new AShapes.OvalShape());
 			else
-				shape = new ShapeDrawable(new AShapes.RectShape());
+				shape = new AShapeDrawable(new AShapes.RectShape());
 
 			shape.SetIntrinsicHeight((int)Context.ToPixels(indicatorSize));
 			shape.SetIntrinsicWidth((int)Context.ToPixels(indicatorSize));

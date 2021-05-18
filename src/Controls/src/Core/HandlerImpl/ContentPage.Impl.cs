@@ -24,7 +24,7 @@ namespace Microsoft.Maui.Controls
 			return new Size(widthConstraint, heightConstraint);
 		}
 
-		protected override Size ArrangeOverride(Rectangle bounds)
+		protected override Size ArrangeOverride(Graphics.Rectangle bounds)
 		{
 			// Update the Bounds (Frame) for this page
 			Layout(bounds);

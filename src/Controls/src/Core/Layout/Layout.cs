@@ -41,7 +41,7 @@ namespace Microsoft.Maui.Controls.Layout2
 			return DesiredSize;
 		}
 
-		protected override Size ArrangeOverride(Rectangle bounds)
+		protected override Size ArrangeOverride(Graphics.Rectangle bounds)
 		{
 			base.ArrangeOverride(bounds);
 

@@ -22,9 +22,9 @@ namespace Microsoft.Maui
 			return new CGSize(size.Width, size.Height);
 		}
 
-		public static Rectangle ToRectangle(this CGRect rect)
+		public static Graphics.Rectangle ToRectangle(this CGRect rect)
 		{
-			return new Rectangle((float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height);
+			return new Graphics.Rectangle((float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height);
 		}
 
 		public static CGRect ToCGRect(this Rectangle rect)

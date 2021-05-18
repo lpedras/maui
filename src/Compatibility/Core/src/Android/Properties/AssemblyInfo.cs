@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Shapes;
+using Shapes = Microsoft.Maui.Controls.Shapes;
 
 [assembly: ExportRenderer(typeof(BoxView), typeof(BoxRenderer))]
 [assembly: ExportRenderer(typeof(Entry), typeof(EntryRenderer))]
@@ -18,12 +18,12 @@ using Microsoft.Maui.Controls.Shapes;
 [assembly: ExportRenderer(typeof(CollectionView), typeof(CollectionViewRenderer))]
 [assembly: ExportRenderer(typeof(CarouselView), typeof(CarouselViewRenderer))]
 [assembly: ExportRenderer(typeof(IndicatorView), typeof(IndicatorViewRenderer))]
-[assembly: ExportRenderer(typeof(Path), typeof(PathRenderer))]
-[assembly: ExportRenderer(typeof(Ellipse), typeof(EllipseRenderer))]
-[assembly: ExportRenderer(typeof(Line), typeof(LineRenderer))]
-[assembly: ExportRenderer(typeof(Polyline), typeof(PolylineRenderer))]
-[assembly: ExportRenderer(typeof(Polygon), typeof(PolygonRenderer))]
-[assembly: ExportRenderer(typeof(Rectangle), typeof(RectangleRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Path), typeof(PathRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Ellipse), typeof(EllipseRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Line), typeof(LineRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Polyline), typeof(PolylineRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Polygon), typeof(PolygonRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Rectangle), typeof(RectangleRenderer))]
 [assembly: ExportRenderer(typeof(RadioButton), typeof(RadioButtonRenderer))]
 [assembly: ExportRenderer(typeof(Slider), typeof(SliderRenderer))]
 [assembly: ExportRenderer(typeof(WebView), typeof(WebViewRenderer))]

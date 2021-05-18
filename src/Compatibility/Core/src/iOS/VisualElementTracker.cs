@@ -29,7 +29,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 		// Track these by hand because the calls down into iOS are too expensive
 		bool _isInteractive;
-		Rectangle _lastBounds;
+		Graphics.Rectangle _lastBounds;
 #if !__MOBILE__
 		Rectangle _lastParentBounds;
 #endif

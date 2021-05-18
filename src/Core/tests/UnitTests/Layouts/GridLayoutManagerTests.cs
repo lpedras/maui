@@ -121,14 +121,14 @@ namespace Microsoft.Maui.UnitTests.Layouts
 		{
 			var manager = new GridLayoutManager(grid);
 			var measuredSize = manager.Measure(widthConstraint, heightConstraint);
-			manager.ArrangeChildren(new Rectangle(Point.Zero, measuredSize));
+			manager.ArrangeChildren(new Graphics.Rectangle(Point.Zero, measuredSize));
 
 			return measuredSize;
 		}
 
 		void AssertArranged(IView view, double x, double y, double width, double height)
 		{
-			var expected = new Rectangle(x, y, width, height);
+			var expected = new Graphics.Rectangle(x, y, width, height);
 			view.Received().Arrange(Arg.Is(expected));
 		}
 
@@ -329,7 +329,7 @@ namespace Microsoft.Maui.UnitTests.Layouts
 
 			var manager = new GridLayoutManager(grid);
 			var measure = manager.Measure(double.PositiveInfinity, double.PositiveInfinity);
-			manager.ArrangeChildren(new Rectangle(0, 0, measure.Width, measure.Height));
+			manager.ArrangeChildren(new Graphics.Rectangle(0, 0, measure.Width, measure.Height));
 
 			// Because the auto row has no content, we expect it to have height zero
 			Assert.Equal(100 + 100, measure.Height);
@@ -417,7 +417,7 @@ namespace Microsoft.Maui.UnitTests.Layouts
 
 			var manager = new GridLayoutManager(grid);
 			var measure = manager.Measure(double.PositiveInfinity, double.PositiveInfinity);
-			manager.ArrangeChildren(new Rectangle(0, 0, measure.Width, measure.Height));
+			manager.ArrangeChildren(new Graphics.Rectangle(0, 0, measure.Width, measure.Height));
 
 			// Because the auto column has no content, we expect it to have width zero
 			Assert.Equal(100 + 100, measure.Width);

@@ -9,7 +9,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 #endif
 {
-	public class PolygonRenderer : ShapeRenderer<Polygon, PolygonView>
+	public class PolygonRenderer : ShapeRenderer<Shapes.Polygon, PolygonView>
 	{
 		PointCollection _points;
 
@@ -19,7 +19,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Polygon> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Polygon> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -42,9 +42,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Polygon.PointsProperty.PropertyName)
+			if (args.PropertyName == Shapes.Polygon.PointsProperty.PropertyName)
 				UpdatePoints();
-			else if (args.PropertyName == Polygon.FillRuleProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Polygon.FillRuleProperty.PropertyName)
 				UpdateFillRule();
 		}
 

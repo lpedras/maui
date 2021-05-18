@@ -136,11 +136,11 @@ namespace Microsoft.Maui.Controls
 				new Size(size.Minimum.Width + Padding.HorizontalThickness, size.Minimum.Height + Padding.VerticalThickness));
 		}
 
-		public static void LayoutChildIntoBoundingRegion(VisualElement child, Rectangle region)
+		public static void LayoutChildIntoBoundingRegion(VisualElement child, Graphics.Rectangle region)
 		{
 			bool isRightToLeft = false;
 			if (child.Parent is IFlowDirectionController parent && (isRightToLeft = parent.ApplyEffectiveFlowDirectionToChildContainer && parent.EffectiveFlowDirection.IsRightToLeft()))
-				region = new Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
+				region = new Graphics.Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
 
 			if (!(child is View view))
 			{
@@ -244,7 +244,7 @@ namespace Microsoft.Maui.Controls
 			if (!ShouldLayoutChildren())
 				return;
 
-			var oldBounds = new Rectangle[LogicalChildrenInternal.Count];
+			var oldBounds = new Graphics.Rectangle[LogicalChildrenInternal.Count];
 			for (var index = 0; index < oldBounds.Length; index++)
 			{
 				var c = (VisualElement)LogicalChildrenInternal[index];
@@ -270,8 +270,8 @@ namespace Microsoft.Maui.Controls
 
 			for (var i = 0; i < oldBounds.Length; i++)
 			{
-				Rectangle oldBound = oldBounds[i];
-				Rectangle newBound = ((VisualElement)LogicalChildrenInternal[i]).Bounds;
+				Graphics.Rectangle oldBound = oldBounds[i];
+				Graphics.Rectangle newBound = ((VisualElement)LogicalChildrenInternal[i]).Bounds;
 				if (oldBound != newBound)
 				{
 					LayoutChanged?.Invoke(this, EventArgs.Empty);
@@ -280,11 +280,11 @@ namespace Microsoft.Maui.Controls
 			}
 		}
 
-		internal static void LayoutChildIntoBoundingRegion(View child, Rectangle region, SizeRequest childSizeRequest)
+		internal static void LayoutChildIntoBoundingRegion(View child, Graphics.Rectangle region, SizeRequest childSizeRequest)
 		{
 			bool isRightToLeft = false;
 			if (child.Parent is IFlowDirectionController parent && (isRightToLeft = parent.ApplyEffectiveFlowDirectionToChildContainer && parent.EffectiveFlowDirection.IsRightToLeft()))
-				region = new Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
+				region = new Graphics.Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
 
 			if (region.Size != childSizeRequest.Request)
 			{

@@ -13,7 +13,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		{
 			var width = Context.FromPixels(r - l);
 			var height = Context.FromPixels(b - t);
-			Child.Element.Layout(new Rectangle(0, 0, width, height));
+			Child.Element.Layout(new Graphics.Rectangle(0, 0, width, height));
 			base.OnLayout(changed, l, t, r, b);
 		}
 	}

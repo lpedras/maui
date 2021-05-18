@@ -7,7 +7,7 @@ using APath = Android.Graphics.Path;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
-	public class PolygonRenderer : ShapeRenderer<Polygon, PolygonView>
+	public class PolygonRenderer : ShapeRenderer<Shapes.Polygon, PolygonView>
 	{
 		PointCollection _points;
 
@@ -16,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Polygon> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Polygon> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -36,9 +36,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Polyline.PointsProperty.PropertyName)
+			if (args.PropertyName == Shapes.Polyline.PointsProperty.PropertyName)
 				UpdatePoints();
-			else if (args.PropertyName == Polyline.FillRuleProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Polyline.FillRuleProperty.PropertyName)
 				UpdateFillRule();
 		}
 

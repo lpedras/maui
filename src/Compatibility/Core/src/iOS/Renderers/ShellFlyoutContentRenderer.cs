@@ -195,7 +195,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		void ReMeasureFooter()
 		{
 			var request = _footer.Measure(View.Frame.Width, double.PositiveInfinity, MeasureFlags.None);
-			Layout.LayoutChildIntoBoundingRegion(_footer, new Rectangle(0, 0, View.Frame.Width, request.Request.Height));
+			Layout.LayoutChildIntoBoundingRegion(_footer, new Graphics.Rectangle(0, 0, View.Frame.Width, request.Request.Height));
 			UpdateFooterPosition(_footerView.Frame.Height);
 		}
 

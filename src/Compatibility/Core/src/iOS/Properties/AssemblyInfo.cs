@@ -3,8 +3,8 @@ using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
-using Microsoft.Maui.Controls.Shapes;
 using UIKit;
+using Shapes = Microsoft.Maui.Controls.Shapes;
 
 [assembly: ExportRenderer(typeof(BoxView), typeof(BoxRenderer))]
 [assembly: ExportRenderer(typeof(Entry), typeof(EntryRenderer))]
@@ -32,12 +32,12 @@ using UIKit;
 [assembly: ExportRenderer(typeof(IndicatorView), typeof(IndicatorViewRenderer))]
 [assembly: ExportRenderer(typeof(OpenGLView), typeof(OpenGLViewRenderer))]
 [assembly: ExportRenderer(typeof(CheckBox), typeof(CheckBoxRenderer))]
-[assembly: ExportRenderer(typeof(Path), typeof(PathRenderer))]
-[assembly: ExportRenderer(typeof(Ellipse), typeof(EllipseRenderer))]
-[assembly: ExportRenderer(typeof(Line), typeof(LineRenderer))]
-[assembly: ExportRenderer(typeof(Polyline), typeof(PolylineRenderer))]
-[assembly: ExportRenderer(typeof(Polygon), typeof(PolygonRenderer))]
-[assembly: ExportRenderer(typeof(Microsoft.Maui.Controls.Shapes.Rectangle), typeof(RectangleRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Path), typeof(PathRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Ellipse), typeof(EllipseRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Line), typeof(LineRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Polyline), typeof(PolylineRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Polygon), typeof(PolygonRenderer))]
+[assembly: ExportRenderer(typeof(Shapes.Rectangle), typeof(RectangleRenderer))]
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(TabbedRenderer))]
 [assembly: ExportRenderer(typeof(NavigationPage), typeof(NavigationRenderer))]

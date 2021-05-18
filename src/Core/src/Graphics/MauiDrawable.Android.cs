@@ -3,6 +3,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using AColor = Android.Graphics.Color;
+using AShape = Android.Graphics.Drawables.Shapes.Shape;
 
 namespace Microsoft.Maui.Graphics
 {
@@ -73,7 +74,7 @@ namespace Microsoft.Maui.Graphics
 			throw new NotImplementedException();
 		}
 
-		protected override void OnDraw(Shape? shape, Canvas? canvas, global::Android.Graphics.Paint? paint)
+		protected override void OnDraw(AShape? shape, Canvas? canvas, global::Android.Graphics.Paint? paint)
 		{
 			if (paint != null && _backgroundColor != null)
 				paint.Color = _backgroundColor.Value;

@@ -7,7 +7,7 @@ namespace Microsoft.Maui.DeviceTests
 	public partial class ShapeViewHandlerTests
 	{
 		MauiShapeView GetNativeShapeView(ShapeViewHandler shapeViewHandler) =>
-			(MauiShapeView)shapeViewHandler.View;
+			shapeViewHandler.NativeView;
 
 		Task ValidateNativeFill(IShapeView shapeView, Color color)
 		{

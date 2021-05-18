@@ -20,11 +20,11 @@ namespace Microsoft.Maui.Controls
 
 		Page _detail;
 
-		Rectangle _detailBounds;
+		Graphics.Rectangle _detailBounds;
 
 		Page _flyout;
 
-		Rectangle _flyoutBounds;
+		Graphics.Rectangle _flyoutBounds;
 
 		public Page Detail
 		{
@@ -97,7 +97,7 @@ namespace Microsoft.Maui.Controls
 		public bool CanChangeIsPresented { get; set; } = true;
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle DetailBounds
+		public Graphics.Rectangle DetailBounds
 		{
 			get { return _detailBounds; }
 			set
@@ -110,7 +110,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle FlyoutBounds
+		public Graphics.Rectangle FlyoutBounds
 		{
 			get { return _flyoutBounds; }
 			set
@@ -273,7 +273,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle MasterBounds
+		public Graphics.Rectangle MasterBounds
 		{
 			get => base.FlyoutBounds;
 			set => FlyoutBounds = value;

@@ -451,7 +451,7 @@ namespace Microsoft.Maui.Controls
 				}
 			};
 
-			var normalEllipse = new Ellipse
+			var normalEllipse = new Shapes.Ellipse
 			{
 				Fill = Brush.Transparent,
 				Aspect = Stretch.Uniform,
@@ -464,7 +464,7 @@ namespace Microsoft.Maui.Controls
 				InputTransparent = true
 			};
 
-			var checkMark = new Ellipse
+			var checkMark = new Shapes.Ellipse
 			{
 				Fill = RadioButtonCheckMarkThemeColor,
 				Aspect = Stretch.Uniform,

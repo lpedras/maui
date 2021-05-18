@@ -173,7 +173,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 
 			if (width > 0 && height > 0)
 			{
-				PageController.ContainerArea = new Rectangle(0, 0, context.FromPixels(width), context.FromPixels(height));
+				PageController.ContainerArea = new Graphics.Rectangle(0, 0, context.FromPixels(width), context.FromPixels(height));
 				pager.Layout(0, 0, width, b);
 			}
 

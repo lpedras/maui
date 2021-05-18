@@ -11,7 +11,7 @@ namespace Microsoft.Maui.Controls
 	{
 		public static readonly BindableProperty LayoutFlagsProperty = BindableProperty.CreateAttached("LayoutFlags", typeof(AbsoluteLayoutFlags), typeof(AbsoluteLayout), AbsoluteLayoutFlags.None);
 
-		public static readonly BindableProperty LayoutBoundsProperty = BindableProperty.CreateAttached("LayoutBounds", typeof(Rectangle), typeof(AbsoluteLayout), new Rectangle(0, 0, AutoSize, AutoSize));
+		public static readonly BindableProperty LayoutBoundsProperty = BindableProperty.CreateAttached("LayoutBounds", typeof(Graphics.Rectangle), typeof(AbsoluteLayout), new Graphics.Rectangle(0, 0, AutoSize, AutoSize));
 
 		readonly AbsoluteElementCollection _children;
 		readonly Lazy<PlatformConfigurationRegistry<AbsoluteLayout>> _platformConfigurationRegistry;
@@ -36,9 +36,9 @@ namespace Microsoft.Maui.Controls
 		}
 
 		[TypeConverter(typeof(BoundsTypeConverter))]
-		public static Rectangle GetLayoutBounds(BindableObject bindable)
+		public static Graphics.Rectangle GetLayoutBounds(BindableObject bindable)
 		{
-			return (Rectangle)bindable.GetValue(LayoutBoundsProperty);
+			return (Graphics.Rectangle)bindable.GetValue(LayoutBoundsProperty);
 		}
 
 		public static AbsoluteLayoutFlags GetLayoutFlags(BindableObject bindable)
@@ -46,7 +46,7 @@ namespace Microsoft.Maui.Controls
 			return (AbsoluteLayoutFlags)bindable.GetValue(LayoutFlagsProperty);
 		}
 
-		public static void SetLayoutBounds(BindableObject bindable, Rectangle bounds)
+		public static void SetLayoutBounds(BindableObject bindable, Graphics.Rectangle bounds)
 		{
 			bindable.SetValue(LayoutBoundsProperty, bounds);
 		}
@@ -60,7 +60,7 @@ namespace Microsoft.Maui.Controls
 		{
 			foreach (View child in LogicalChildrenInternal)
 			{
-				Rectangle rect = ComputeLayoutForRegion(child, new Size(width, height));
+				Graphics.Rectangle rect = ComputeLayoutForRegion(child, new Size(width, height));
 				rect.X += x;
 				rect.Y += y;
 
@@ -113,7 +113,7 @@ namespace Microsoft.Maui.Controls
 			}
 
 			var result = LayoutConstraint.None;
-			Rectangle layoutBounds = GetLayoutBounds(view);
+			Graphics.Rectangle layoutBounds = GetLayoutBounds(view);
 			if ((layoutFlags & AbsoluteLayoutFlags.HeightProportional) != 0)
 			{
 				bool widthLocked = layoutBounds.Width != AutoSize;
@@ -155,7 +155,7 @@ namespace Microsoft.Maui.Controls
 
 			var sizeRequest = new Lazy<SizeRequest>(() => view.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins));
 
-			Rectangle bounds = GetLayoutBounds(view);
+			Graphics.Rectangle bounds = GetLayoutBounds(view);
 			AbsoluteLayoutFlags absFlags = GetLayoutFlags(view);
 			bool widthIsProportional = (absFlags & AbsoluteLayoutFlags.WidthProportional) != 0;
 			bool heightIsProportional = (absFlags & AbsoluteLayoutFlags.HeightProportional) != 0;
@@ -217,12 +217,12 @@ namespace Microsoft.Maui.Controls
 			return new SizeRequest(new Size(width, height), new Size(minWidth, minHeight));
 		}
 
-		static Rectangle ComputeLayoutForRegion(View view, Size region)
+		static Graphics.Rectangle ComputeLayoutForRegion(View view, Size region)
 		{
-			var result = new Rectangle();
+			var result = new Graphics.Rectangle();
 
 			SizeRequest sizeRequest;
-			Rectangle bounds = GetLayoutBounds(view);
+			Graphics.Rectangle bounds = GetLayoutBounds(view);
 			AbsoluteLayoutFlags absFlags = GetLayoutFlags(view);
 			bool widthIsProportional = (absFlags & AbsoluteLayoutFlags.WidthProportional) != 0;
 			bool heightIsProportional = (absFlags & AbsoluteLayoutFlags.HeightProportional) != 0;
@@ -293,7 +293,7 @@ namespace Microsoft.Maui.Controls
 
 		public interface IAbsoluteList<T> : IList<T> where T : View
 		{
-			void Add(View view, Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None);
+			void Add(View view, Graphics.Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None);
 
 			void Add(View view, Point position);
 		}
@@ -307,7 +307,7 @@ namespace Microsoft.Maui.Controls
 
 			internal AbsoluteLayout Parent { get; set; }
 
-			public void Add(View view, Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None)
+			public void Add(View view, Graphics.Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None)
 			{
 				SetLayoutBounds(view, bounds);
 				SetLayoutFlags(view, flags);
@@ -316,7 +316,7 @@ namespace Microsoft.Maui.Controls
 
 			public void Add(View view, Point position)
 			{
-				SetLayoutBounds(view, new Rectangle(position.X, position.Y, AutoSize, AutoSize));
+				SetLayoutBounds(view, new Graphics.Rectangle(position.X, position.Y, AutoSize, AutoSize));
 				Add(view);
 			}
 		}

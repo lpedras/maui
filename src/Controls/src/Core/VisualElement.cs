@@ -401,9 +401,9 @@ namespace Microsoft.Maui.Controls
 			get { return (IList<Behavior>)GetValue(BehaviorsProperty); }
 		}
 
-		public Rectangle Bounds
+		public Graphics.Rectangle Bounds
 		{
-			get { return new Rectangle(X, Y, Width, Height); }
+			get { return new Graphics.Rectangle(X, Y, Width, Height); }
 			private set
 			{
 				if (value.X == X && value.Y == Y && value.Height == Height && value.Width == Width)
@@ -921,7 +921,7 @@ namespace Microsoft.Maui.Controls
 					}
 		}
 
-		internal void MockBounds(Rectangle bounds)
+		internal void MockBounds(Graphics.Rectangle bounds)
 		{
 #if NETSTANDARD2_0 || NET6_0
 			(_mockX, _mockY, _mockWidth, _mockHeight) = bounds;

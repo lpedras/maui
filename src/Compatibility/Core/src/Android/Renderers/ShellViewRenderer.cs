@@ -101,7 +101,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				layoutParams.Height = (int)context.ToPixels(height);
 
 			NativeView.LayoutParameters = layoutParams;
-			View.Layout(new Rectangle(x, y, width, height));
+			View.Layout(new Graphics.Rectangle(x, y, width, height));
 			Renderer.UpdateLayout();
 		}
 

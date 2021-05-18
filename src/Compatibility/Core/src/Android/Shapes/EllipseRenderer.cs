@@ -4,14 +4,14 @@ using APath = Android.Graphics.Path;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
-	public class EllipseRenderer : ShapeRenderer<Ellipse, EllipseView>
+	public class EllipseRenderer : ShapeRenderer<Shapes.Ellipse, EllipseView>
 	{
 		public EllipseRenderer(Context context) : base(context)
 		{
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Ellipse> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Ellipse> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{

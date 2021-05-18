@@ -8,7 +8,7 @@ namespace Microsoft.Maui.Controls
 {
 	public class BoundsConstraint
 	{
-		Func<Rectangle> _measureFunc;
+		Func<Graphics.Rectangle> _measureFunc;
 
 		BoundsConstraint()
 		{
@@ -17,14 +17,14 @@ namespace Microsoft.Maui.Controls
 		internal bool CreatedFromExpression { get; set; }
 		internal IEnumerable<View> RelativeTo { get; set; }
 
-		public static BoundsConstraint FromExpression(Expression<Func<Rectangle>> expression, IEnumerable<View> parents = null)
+		public static BoundsConstraint FromExpression(Expression<Func<Graphics.Rectangle>> expression, IEnumerable<View> parents = null)
 		{
 			return FromExpression(expression, false, parents);
 		}
 
-		internal static BoundsConstraint FromExpression(Expression<Func<Rectangle>> expression, bool fromExpression, IEnumerable<View> parents = null)
+		internal static BoundsConstraint FromExpression(Expression<Func<Graphics.Rectangle>> expression, bool fromExpression, IEnumerable<View> parents = null)
 		{
-			Func<Rectangle> compiled = expression.Compile();
+			Func<Graphics.Rectangle> compiled = expression.Compile();
 			var result = new BoundsConstraint
 			{
 				_measureFunc = compiled,
@@ -35,7 +35,7 @@ namespace Microsoft.Maui.Controls
 			return result;
 		}
 
-		internal Rectangle Compute()
+		internal Graphics.Rectangle Compute()
 		{
 			return _measureFunc();
 		}

@@ -7,7 +7,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 #endif
 {
-	public class EllipseRenderer : ShapeRenderer<Ellipse, EllipseView>
+	public class EllipseRenderer : ShapeRenderer<Shapes.Ellipse, EllipseView>
 	{
 		[Microsoft.Maui.Controls.Internals.Preserve(Conditional = true)]
 		public EllipseRenderer()
@@ -15,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Ellipse> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Ellipse> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{

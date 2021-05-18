@@ -243,7 +243,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 							new CGRect(parent.Bounds.X, HeaderTopMargin, parent.Bounds.Width, parent.Bounds.Height - HeaderTopMargin - footerHeight);
 
 					if (Content != null)
-						Layout.LayoutChildIntoBoundingRegion(Content, new Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height - contentViewYOffset));
+						Layout.LayoutChildIntoBoundingRegion(Content, new Graphics.Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height - contentViewYOffset));
 				}
 			}
 			else
@@ -263,7 +263,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 				if (Content != null)
 				{
-					Layout.LayoutChildIntoBoundingRegion(Content, new Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height));
+					Layout.LayoutChildIntoBoundingRegion(Content, new Graphics.Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height));
 				}
 			}
 

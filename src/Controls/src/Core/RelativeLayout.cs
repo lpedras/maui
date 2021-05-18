@@ -186,13 +186,13 @@ namespace Microsoft.Maui.Controls
 		{
 			double mockWidth = double.IsPositiveInfinity(widthConstraint) ? ParentView.Width : widthConstraint;
 			double mockHeight = double.IsPositiveInfinity(heightConstraint) ? ParentView.Height : heightConstraint;
-			MockBounds(new Rectangle(0, 0, mockWidth, mockHeight));
+			MockBounds(new Graphics.Rectangle(0, 0, mockWidth, mockHeight));
 
-			var boundsRectangle = new Rectangle();
+			var boundsRectangle = new Graphics.Rectangle();
 			var set = false;
 			foreach (View child in ChildrenInSolveOrder)
 			{
-				Rectangle bounds = SolveView(child);
+				Graphics.Rectangle bounds = SolveView(child);
 				child.MockBounds(bounds);
 				if (!set)
 				{
@@ -294,11 +294,11 @@ namespace Microsoft.Maui.Controls
 			else
 				height = () => view.Measure(widthConstraint != null ? width() : Width, Height, MeasureFlags.IncludeMargins).Request.Height;
 
-			BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Rectangle(x(), y(), width(), height()), parents.Distinct().ToArray());
+			BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Graphics.Rectangle(x(), y(), width(), height()), parents.Distinct().ToArray());
 			SetBoundsConstraint(view, bounds);
 		}
 
-		static Rectangle SolveView(View view)
+		static Graphics.Rectangle SolveView(View view)
 		{
 			BoundsConstraint boundsConstraint = GetBoundsConstraint(view);
 
@@ -314,7 +314,7 @@ namespace Microsoft.Maui.Controls
 
 		public interface IRelativeList<T> : IList<T> where T : View
 		{
-			void Add(T view, Expression<Func<Rectangle>> bounds);
+			void Add(T view, Expression<Func<Graphics.Rectangle>> bounds);
 
 			void Add(T view, Expression<Func<double>> x = null, Expression<Func<double>> y = null, Expression<Func<double>> width = null, Expression<Func<double>> height = null);
 
@@ -330,7 +330,7 @@ namespace Microsoft.Maui.Controls
 
 			internal RelativeLayout Parent { get; set; }
 
-			public void Add(View view, Expression<Func<Rectangle>> bounds)
+			public void Add(View view, Expression<Func<Graphics.Rectangle>> bounds)
 			{
 				if (bounds == null)
 					throw new ArgumentNullException(nameof(bounds));
@@ -352,7 +352,7 @@ namespace Microsoft.Maui.Controls
 				parents.AddRange(ExpressionSearch.Default.FindObjects<View>(width));
 				parents.AddRange(ExpressionSearch.Default.FindObjects<View>(height));
 
-				BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Rectangle(xCompiled(), yCompiled(), widthCompiled(), heightCompiled()), fromExpression: true, parents: parents.Distinct().ToArray());
+				BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Graphics.Rectangle(xCompiled(), yCompiled(), widthCompiled(), heightCompiled()), fromExpression: true, parents: parents.Distinct().ToArray());
 
 				SetBoundsConstraint(view, bounds);
 

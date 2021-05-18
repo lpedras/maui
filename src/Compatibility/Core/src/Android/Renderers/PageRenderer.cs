@@ -228,7 +228,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			var deviceIndependentRight = Context.FromPixels(r);
 			var deviceIndependentBottom = Context.FromPixels(b);
 
-			var destination = Rectangle.FromLTRB(deviceIndependentLeft, deviceIndependentTop,
+			var destination = Graphics.Rectangle.FromLTRB(deviceIndependentLeft, deviceIndependentTop,
 				deviceIndependentRight, deviceIndependentBottom);
 
 			(Element as IFrameworkElement)?.Arrange(destination);

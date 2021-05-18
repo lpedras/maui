@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Graphics;
+﻿#nullable enable
+using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -9,28 +10,26 @@ namespace Microsoft.Maui.Controls
 
 		}
 
-		public ShapeView(Shape shape)
+		public ShapeView(IShape shape)
 		{
 			Shape = shape;
 		}
 
-		public Shape Shape { get; set; }
+		public IShape? Shape { get; set; }
 
-		public Color Fill { get; set; }
+		public Paint? Fill { get; set; }
 
-		public Color Stroke { get; set; }
+		public Color? Stroke { get; set; }
 
 		public double StrokeThickness { get; set; }
 
-		public DoubleCollection StrokeDashArray { get; set; }
+		public float[]? StrokeDashPattern { get; set; }
 
-		public double StrokeDashOffset { get; set; }
+		public LineCap StrokeLineCap { get; set; }
 
-		public PenLineCap StrokeLineCap { get; set; }
+		public LineJoin StrokeLineJoin { get; set; }
 
-		public PenLineJoin StrokeLineJoin { get; set; }
-
-		public double StrokeMiterLimit { get; set; }
+		public float StrokeMiterLimit { get; set; }
 
 		public Stretch Stretch { get; set; }
 	}

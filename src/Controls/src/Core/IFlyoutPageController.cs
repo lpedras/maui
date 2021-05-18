@@ -1,5 +1,4 @@
 using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -7,9 +6,9 @@ namespace Microsoft.Maui.Controls
 	{
 		bool CanChangeIsPresented { get; set; }
 
-		Rectangle DetailBounds { get; set; }
+		Graphics.Rectangle DetailBounds { get; set; }
 
-		Rectangle FlyoutBounds { get; set; }
+		Graphics.Rectangle FlyoutBounds { get; set; }
 
 		bool ShouldShowSplitMode { get; }
 
@@ -23,9 +22,9 @@ namespace Microsoft.Maui.Controls
 	{
 		bool CanChangeIsPresented { get; set; }
 
-		Rectangle DetailBounds { get; set; }
+		Graphics.Rectangle DetailBounds { get; set; }
 
-		Rectangle MasterBounds { get; set; }
+		Graphics.Rectangle MasterBounds { get; set; }
 
 		bool ShouldShowSplitMode { get; }
 

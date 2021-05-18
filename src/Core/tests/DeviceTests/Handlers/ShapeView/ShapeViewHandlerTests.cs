@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Maui.DeviceTests.Stubs;
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 
 namespace Microsoft.Maui.DeviceTests
@@ -12,13 +13,13 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var rectangle = new ShapeViewStub()
 			{
-				Shape = new Graphics.Rectangle(),
-				Fill = Color.Red,
+				Shape = new RectangleStub(),
+				Fill = new SolidPaintStub(Colors.Red),
 				Height = 50,
 				Width = 100
 			};
 
-			await ValidateNativeFill(rectangle, Color.Red);
+			await ValidateNativeFill(rectangle, Colors.Red);
 		}
 
 		[Fact(DisplayName = "Ellipse Initializes Correctly")]
@@ -26,13 +27,13 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var ellipse = new ShapeViewStub()
 			{
-				Shape = new Graphics.Ellipse(),
-				Fill = Color.Blue,
+				Shape = new EllipseStub(),
+				Fill = new SolidPaintStub(Colors.Blue),
 				Height = 50,
 				Width = 100
 			};
 
-			await ValidateNativeFill(ellipse, Color.Blue);
+			await ValidateNativeFill(ellipse, Colors.Blue);
 		}
 
 		[Fact(DisplayName = "Line Initializes Correctly")]
@@ -40,14 +41,14 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var line = new ShapeViewStub()
 			{
-				Shape = new Graphics.Line { X1 = 0, Y1 = 0, X2 = 90, Y2 = 45 },
-				Stroke = Color.Purple,
+				Shape = new LineStub { X1 = 0, Y1 = 0, X2 = 90, Y2 = 45 },
+				Stroke = Colors.Purple,
 				StrokeThickness = 4,
 				Height = 50,
 				Width = 100
 			};
 
-			await ValidateNativeFill(line, Color.Purple);
+			await ValidateNativeFill(line, Colors.Purple);
 		}
 
 		[Fact(DisplayName = "Polyline Initializes Correctly")]
@@ -55,14 +56,14 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var polyline = new ShapeViewStub()
 			{
-				Shape = new Graphics.Polyline { Points = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(50, 90) } },
-				Stroke = Color.Green,
+				Shape = new PolylineStub { Points = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(50, 90) } },
+				Stroke = Colors.Green,
 				StrokeThickness = 4,
 				Height = 50,
 				Width = 100
 			};
 
-			await ValidateNativeFill(polyline, Color.Green);
+			await ValidateNativeFill(polyline, Colors.Green);
 		}
 
 		[Fact(DisplayName = "Polygon Initializes Correctly")]
@@ -70,15 +71,15 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var polygon = new ShapeViewStub()
 			{
-				Shape = new Graphics.Polygon { Points = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(50, 90) } },
-				Fill = Color.Lime,
-				Stroke = Color.Black,
+				Shape = new PolygonStub { Points = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(50, 90) } },
+				Fill = new SolidPaintStub(Colors.Lime),
+				Stroke = Colors.Black,
 				StrokeThickness = 4,
 				Height = 50,
 				Width = 100
 			};
 
-			await ValidateNativeFill(polygon, Color.Lime);
+			await ValidateNativeFill(polygon, Colors.Lime);
 		}
 
 		[Fact(DisplayName = "Path Initializes Correctly")]
@@ -86,15 +87,15 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var path = new ShapeViewStub()
 			{
-				Shape = new Graphics.Path { Data = "M15.999996,0L31.999999,13.000001 15.999996,26.199999 0,13.000001z" },
-				Fill = Color.Coral,
-				Stroke = Color.Black,
+				Shape = new PathStub { Data = "M15.999996,0L31.999999,13.000001 15.999996,26.199999 0,13.000001z" },
+				Fill = new SolidPaintStub(Colors.Coral),
+				Stroke = Colors.Black,
 				StrokeThickness = 1,
 				Height = 50,
 				Width = 50
 			};
 
-			await ValidateNativeFill(path, Color.Coral);
+			await ValidateNativeFill(path, Colors.Coral);
 		}
 	}
 }

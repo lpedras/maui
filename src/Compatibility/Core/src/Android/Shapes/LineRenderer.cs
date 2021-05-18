@@ -5,14 +5,14 @@ using APath = Android.Graphics.Path;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
-	public class LineRenderer : ShapeRenderer<Line, LineView>
+	public class LineRenderer : ShapeRenderer<Shapes.Line, LineView>
 	{
 		public LineRenderer(Context context) : base(context)
 		{
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Line> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Line> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -34,13 +34,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Line.X1Property.PropertyName)
+			if (args.PropertyName == Shapes.Line.X1Property.PropertyName)
 				UpdateX1();
-			else if (args.PropertyName == Line.Y1Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.Y1Property.PropertyName)
 				UpdateY1();
-			else if (args.PropertyName == Line.X2Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.X2Property.PropertyName)
 				UpdateX2();
-			else if (args.PropertyName == Line.Y2Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.Y2Property.PropertyName)
 				UpdateY2();
 		}
 

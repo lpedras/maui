@@ -131,7 +131,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		public void SetElementSize(Size size)
 		{
-			Layout.LayoutChildIntoBoundingRegion(Element, new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Layout.LayoutChildIntoBoundingRegion(Element, new Graphics.Rectangle(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public void LoadHtml(string html, string baseUrl)
@@ -211,8 +211,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		{
 			try
 			{
-				var file = Path.GetFileNameWithoutExtension(url);
-				var ext = Path.GetExtension(url);
+				var file = System.IO.Path.GetFileNameWithoutExtension(url);
+				var ext = System.IO.Path.GetExtension(url);
 
 				var nsUrl = NSBundle.MainBundle.GetUrlForResource(file, ext);
 

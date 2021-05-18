@@ -20,7 +20,7 @@ namespace Microsoft.Maui.Controls
 			set { SetValue(HasRenderLoopProperty, value); }
 		}
 
-		public Action<Rectangle> OnDisplay { get; set; }
+		public Action<Graphics.Rectangle> OnDisplay { get; set; }
 
 		public void Display()
 			=> DisplayRequested?.Invoke(this, EventArgs.Empty);

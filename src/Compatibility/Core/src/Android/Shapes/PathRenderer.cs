@@ -2,18 +2,17 @@ using System.ComponentModel;
 using Android.Content;
 using AMatrix = Android.Graphics.Matrix;
 using APath = Android.Graphics.Path;
-using Path = Microsoft.Maui.Controls.Shapes.Path;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
-	public class PathRenderer : ShapeRenderer<Path, PathView>
+	public class PathRenderer : ShapeRenderer<Shapes.Path, PathView>
 	{
 		public PathRenderer(Context context) : base(context)
 		{
 
 		}
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Path> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Path> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -33,9 +32,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Path.DataProperty.PropertyName)
+			if (args.PropertyName == Shapes.Path.DataProperty.PropertyName)
 				UpdateData();
-			else if (args.PropertyName == Path.RenderTransformProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Path.RenderTransformProperty.PropertyName)
 			{
 				UpdateData();
 				UpdateRenderTransform();

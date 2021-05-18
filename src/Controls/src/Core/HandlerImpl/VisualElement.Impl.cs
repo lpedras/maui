@@ -10,7 +10,7 @@ namespace Microsoft.Maui.Controls
 		Semantics _semantics;
 		IViewHandler _handler;
 
-		public Rectangle Frame => Bounds;
+		public Graphics.Rectangle Frame => Bounds;
 
 		public IViewHandler Handler
 		{
@@ -44,12 +44,12 @@ namespace Microsoft.Maui.Controls
 
 		public Size DesiredSize { get; protected set; }
 
-		public void Arrange(Rectangle bounds)
+		public void Arrange(Graphics.Rectangle bounds)
 		{
 			Layout(bounds);
 		}
 
-		Size IFrameworkElement.Arrange(Rectangle bounds)
+		Size IFrameworkElement.Arrange(Graphics.Rectangle bounds)
 		{
 			return ArrangeOverride(bounds);
 		}
@@ -63,7 +63,7 @@ namespace Microsoft.Maui.Controls
 			return (Math.Abs(a - b) < tolerance);
 		}
 
-		bool CloseEnough(Rectangle currentBounds, Rectangle newBounds)
+		bool CloseEnough(Graphics.Rectangle currentBounds, Graphics.Rectangle newBounds)
 		{
 			if (!CloseEnough(currentBounds.X, newBounds.X))
 			{
@@ -90,7 +90,7 @@ namespace Microsoft.Maui.Controls
 
 		// ArrangeOverride provides a way to allow subclasses (e.g., Layout) to override Arrange even though
 		// the interface has to be explicitly implemented to avoid conflict with the old Arrange method
-		protected virtual Size ArrangeOverride(Rectangle bounds)
+		protected virtual Size ArrangeOverride(Graphics.Rectangle bounds)
 		{
 			// We check the previous bounds here to avoid getting into a loop caused by the OnSizeAllocated override
 			// in View.cs; the arrange it forces ends up back here and if we have a margin, ComputeFrame will 
@@ -105,7 +105,7 @@ namespace Microsoft.Maui.Controls
 			return Frame.Size;
 		}
 
-		public void Layout(Rectangle bounds)
+		public void Layout(Graphics.Rectangle bounds)
 		{
 			Bounds = bounds;
 		}
