@@ -539,7 +539,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.UWP
 
 		void UpdateContainerArea()
 		{
-			Element.ContainerArea = new Rectangle(0, 0, _container.ContentWidth, _container.ContentHeight);
+			Element.ContainerArea = new Graphics.Rectangle(0, 0, _container.ContentWidth, _container.ContentHeight);
 		}
 
 		void UpdateNavigationBarBackgroundColor()

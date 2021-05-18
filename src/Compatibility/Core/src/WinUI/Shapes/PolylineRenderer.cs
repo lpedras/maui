@@ -16,11 +16,11 @@ using WPolyline = System.Windows.Shapes.Polyline;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 #endif
 {
-	public class PolylineRenderer : ShapeRenderer<Polyline, WPolyline>
+	public class PolylineRenderer : ShapeRenderer<Shapes.Polyline, WPolyline>
 	{
 		PointCollection _points;
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Polyline> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Polyline> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -40,9 +40,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Polyline.PointsProperty.PropertyName)
+			if (args.PropertyName == Shapes.Polyline.PointsProperty.PropertyName)
 				UpdatePoints();
-			else if (args.PropertyName == Polyline.FillRuleProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Polyline.FillRuleProperty.PropertyName)
 				UpdateFillRule();
 		}
 

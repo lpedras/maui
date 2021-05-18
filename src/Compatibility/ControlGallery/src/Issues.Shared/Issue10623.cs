@@ -154,9 +154,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			}
 		}
 
-		private Polygon GetFullStar()
+		private Shapes.Polygon GetFullStar()
 		{
-			var fullStar = new Polygon()
+			var fullStar = new Shapes.Polygon()
 			{
 				Points = _fullStarPoints,
 				Fill = FillColor,
@@ -171,7 +171,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var grid = new Grid();
 
-			var halfStar = new Polygon()
+			var halfStar = new Shapes.Polygon()
 			{
 				Points = _halfStarPoints,
 				Fill = _fillColor,
@@ -179,7 +179,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				StrokeThickness = 0,
 			};
 
-			var emptyStar = new Polygon()
+			var emptyStar = new Shapes.Polygon()
 			{
 				Points = _fullStarPoints,
 				StrokeThickness = StrokeThickness,
@@ -192,9 +192,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			return grid;
 		}
 
-		private Polygon GetEmptyStar()
+		private Shapes.Polygon GetEmptyStar()
 		{
-			var emptyStar = new Polygon()
+			var emptyStar = new Shapes.Polygon()
 			{
 				Points = _fullStarPoints,
 				StrokeThickness = StrokeThickness,

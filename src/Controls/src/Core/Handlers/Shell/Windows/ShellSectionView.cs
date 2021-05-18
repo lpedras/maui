@@ -57,7 +57,7 @@ namespace Microsoft.Maui.Controls.Platform
 		void OnShellSectionViewSizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
 		{
 			if (Page != null)
-				Page.ContainerArea = new Rectangle(0, 0, e.NewSize.Width, e.NewSize.Height);
+				Page.ContainerArea = new Graphics.Rectangle(0, 0, e.NewSize.Width, e.NewSize.Height);
 		}
 
 		void OnMenuItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

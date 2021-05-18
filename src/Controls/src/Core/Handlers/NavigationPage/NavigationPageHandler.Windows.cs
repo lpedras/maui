@@ -514,7 +514,7 @@ namespace Microsoft.Maui.Controls.Handlers
 
 		void UpdateContainerArea()
 		{
-			VirtualViewWithValidation().ContainerArea = new Rectangle(0, 0, NativeViewValidation().ContentWidth, NativeViewValidation().ContentHeight);
+			VirtualViewWithValidation().ContainerArea = new Graphics.Rectangle(0, 0, NativeViewValidation().ContentWidth, NativeViewValidation().ContentHeight);
 		}
 
 		void UpdateTitleVisible()

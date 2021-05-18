@@ -131,7 +131,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				};
 				Microsoft.Maui.Controls.CompressedLayout.SetIsHeadless(stack, true);
 				grid.AddChild(stack, 0, 0);
-				layout.Children.Add(grid, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+				layout.Children.Add(grid, new Graphics.Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
 				View = layout;
 				Microsoft.Maui.Controls.CompressedLayout.SetIsHeadless(stack, TestPage.ShouldUseCompressedLayout);

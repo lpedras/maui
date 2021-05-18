@@ -67,7 +67,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			};
 
 			AbsoluteLayout.SetLayoutFlags(image, AbsoluteLayoutFlags.All);
-			AbsoluteLayout.SetLayoutBounds(image, new Rectangle(0, 0, 1, 1));
+			AbsoluteLayout.SetLayoutBounds(image, new Graphics.Rectangle(0, 0, 1, 1));
 			absolute.Children.Add(image);
 
 			var stack = new StackLayout();

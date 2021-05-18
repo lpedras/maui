@@ -77,7 +77,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "Navigate back, and navigate again to this page several times. If shapes are always rendered, the test has passed."
 			};
 
-			var ellipse = new Ellipse
+			var ellipse = new Shapes.Ellipse
 			{
 				HorizontalOptions = LayoutOptions.Start,
 				Stroke = Brush.DarkBlue,

@@ -16,11 +16,11 @@ using WPolygon = System.Windows.Shapes.Polygon;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 #endif
 {
-	public class PolygonRenderer : ShapeRenderer<Polygon, WPolygon>
+	public class PolygonRenderer : ShapeRenderer<Shapes.Polygon, WPolygon>
 	{
 		PointCollection _points;
 
-		protected override void OnElementChanged(ElementChangedEventArgs<Polygon> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Polygon> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -43,9 +43,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Polygon.PointsProperty.PropertyName)
+			if (args.PropertyName == Shapes.Polygon.PointsProperty.PropertyName)
 				UpdatePoints();
-			else if (args.PropertyName == Polygon.FillRuleProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Polygon.FillRuleProperty.PropertyName)
 				UpdateFillRule();
 		}
 

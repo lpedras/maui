@@ -50,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var points1 = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(100, 95), new Point(10, 95) };
 			var points2 = new PointCollection() { new Point(10, 5), new Point(100, 70), new Point(100, 95), new Point(10, 95) };
 
-			var polygon = new Polygon
+			var polygon = new Shapes.Polygon
 			{
 				HeightRequest = 100,
 				WidthRequest = 100,

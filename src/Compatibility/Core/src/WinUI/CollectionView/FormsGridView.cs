@@ -138,7 +138,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.UWP
 		{
 			if (_formsEmptyView != null)
 			{
-				_formsEmptyView.Layout(new Rectangle(0, 0, finalSize.Width, finalSize.Height));
+				_formsEmptyView.Layout(new Graphics.Rectangle(0, 0, finalSize.Width, finalSize.Height));
 			}
 
 			return base.ArrangeOverride(finalSize);

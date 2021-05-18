@@ -12,9 +12,9 @@ using WLine = System.Windows.Shapes.Line;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 #endif
 {
-	public class LineRenderer : ShapeRenderer<Line, WLine>
+	public class LineRenderer : ShapeRenderer<Shapes.Line, WLine>
 	{
-		protected override void OnElementChanged(ElementChangedEventArgs<Line> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Line> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -36,13 +36,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Line.X1Property.PropertyName)
+			if (args.PropertyName == Shapes.Line.X1Property.PropertyName)
 				UpdateX1();
-			else if (args.PropertyName == Line.Y1Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.Y1Property.PropertyName)
 				UpdateY1();
-			else if (args.PropertyName == Line.X2Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.X2Property.PropertyName)
 				UpdateX2();
-			else if (args.PropertyName == Line.Y2Property.PropertyName)
+			else if (args.PropertyName == Shapes.Line.Y2Property.PropertyName)
 				UpdateY2();
 		}
 

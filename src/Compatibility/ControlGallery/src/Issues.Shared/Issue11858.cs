@@ -39,7 +39,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "If despite scaling the ellipse looks sharp, the test has passed."
 			};
 
-			var ellipse = new Ellipse
+			var ellipse = new Shapes.Ellipse.
 			{
 				HorizontalOptions = LayoutOptions.Start,
 				HeightRequest = 100,

@@ -41,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var pathGeometry = new PathGeometry();
 			PathFigureCollectionConverter.ParseStringToPathFigureCollection(pathGeometry.Figures, "M0,0 V300 H300 V-300 Z");
 
-			var path = new Path
+			var path = new Shapes.Path
 			{
 				AutomationId = PathId,
 				Data = pathGeometry,

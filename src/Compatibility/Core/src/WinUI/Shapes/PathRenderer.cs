@@ -12,9 +12,9 @@ using WPath = System.Windows.Shapes.Path;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 #endif
 {
-	public class PathRenderer : ShapeRenderer<Path, WPath>
+	public class PathRenderer : ShapeRenderer<Shapes.Path, WPath>
 	{
-		protected override void OnElementChanged(ElementChangedEventArgs<Path> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Path> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{
@@ -34,9 +34,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 		{
 			base.OnElementPropertyChanged(sender, args);
 
-			if (args.PropertyName == Path.DataProperty.PropertyName)
+			if (args.PropertyName == Shapes.Path.DataProperty.PropertyName)
 				UpdateData();
-			else if (args.PropertyName == Path.RenderTransformProperty.PropertyName)
+			else if (args.PropertyName == Shapes.Path.RenderTransformProperty.PropertyName)
 				UpdateRenderTransform();
 		}
 

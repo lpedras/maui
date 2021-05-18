@@ -38,7 +38,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "Reduce the Window size to a minimum, without exceptions the test has passed."
 			};
 
-			var path = new Path
+			var path = new Shapes.Path
 			{
 				BackgroundColor = Colors.LightGray,
 				Stroke = Brush.Black,

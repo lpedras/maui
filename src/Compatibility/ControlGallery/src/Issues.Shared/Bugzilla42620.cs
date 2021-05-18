@@ -60,7 +60,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				BackgroundColor = color
 			};
-			layout.Children.Add(box, Rectangle.FromLTRB(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+			layout.Children.Add(box, Graphics.Rectangle.FromLTRB(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
 			var label = new Label()
 			{
@@ -69,7 +69,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				BackgroundColor = color,
 				VerticalOptions = LayoutOptions.Center
 			};
-			layout.Children.Add(label, Rectangle.FromLTRB(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+			layout.Children.Add(label, Graphics.Rectangle.FromLTRB(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 			var tgr = new TapGestureRecognizer();
 			tgr.Tapped += (x, o) =>
 			{

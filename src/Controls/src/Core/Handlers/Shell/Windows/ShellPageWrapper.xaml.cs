@@ -50,7 +50,7 @@ namespace Microsoft.Maui.Controls.Platform
 		void OnPageLoaded(object sender, RoutedEventArgs e)
 		{
 			var frameworkElement = sender as FrameworkElement;
-			Page.Layout(new Rectangle(0, 0, frameworkElement.ActualWidth, frameworkElement.ActualHeight));
+			Page.Layout(new Graphics.Rectangle(0, 0, frameworkElement.ActualWidth, frameworkElement.ActualHeight));
 		}
 	}
 }

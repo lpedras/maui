@@ -11,9 +11,9 @@ using WEllipse = System.Windows.Shapes.Ellipse;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.WPF
 #endif
 {
-	public class EllipseRenderer : ShapeRenderer<Ellipse, WEllipse>
+	public class EllipseRenderer : ShapeRenderer<Shapes.Ellipse, WEllipse>
 	{
-		protected override void OnElementChanged(ElementChangedEventArgs<Ellipse> args)
+		protected override void OnElementChanged(ElementChangedEventArgs<Shapes.Ellipse> args)
 		{
 			if (Control == null && args.NewElement != null)
 			{

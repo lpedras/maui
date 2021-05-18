@@ -79,7 +79,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.UWP
 			protected override Windows.Foundation.Size ArrangeOverride(Windows.Foundation.Size finalSize)
 			{
 				_view.IsInNativeLayout = true;
-				Layout.LayoutChildIntoBoundingRegion(_view, new Rectangle(0, 0, finalSize.Width, finalSize.Height));
+				Layout.LayoutChildIntoBoundingRegion(_view, new Graphics.Rectangle(0, 0, finalSize.Width, finalSize.Height));
 
 				if (_view.Width <= 0 || _view.Height <= 0)
 				{

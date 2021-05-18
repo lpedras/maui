@@ -45,7 +45,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Text = "Navigate to the second Tab"
 				};
 
-				var ellipse = new Ellipse
+				var ellipse = new Shapes.Ellipse
 				{
 					HorizontalOptions = LayoutOptions.Start,
 					HeightRequest = 50,
